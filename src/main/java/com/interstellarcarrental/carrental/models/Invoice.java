@@ -6,9 +6,9 @@ import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -27,7 +27,7 @@ public class Invoice {
     static int nextInvoiceNumber = 10000;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private double discount;
     private Customer invoiceOwner;

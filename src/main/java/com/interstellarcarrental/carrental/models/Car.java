@@ -2,6 +2,7 @@ package com.interstellarcarrental.carrental.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +14,7 @@ import lombok.Data;
 public class Car {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String vehicleID;
     private String modelName;
