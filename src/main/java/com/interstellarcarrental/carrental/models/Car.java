@@ -1,11 +1,21 @@
 package com.interstellarcarrental.carrental.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Data;
 
 @Data
+@Entity
+@Table(name = "CAR")
 public class Car {
     
+    @Id
+    @GeneratedValue
     private long id;
+    private String vehicleID;
     private String modelName;
     private String manufacturingDate;
     private String propellantType;

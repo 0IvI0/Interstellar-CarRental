@@ -6,6 +6,12 @@ import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +20,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Setter
 @Getter
+@Entity
+@Table(name = "Invoice")
 public class Invoice {
 
     static int nextInvoiceNumber = 10000;
+
+    @Id
+    @GeneratedValue
+    private long id;
     private double discount;
     private Customer invoiceOwner;
     private boolean paidInvoice = false;
@@ -78,7 +90,7 @@ public class Invoice {
         pw.println("");
         pw.println("Rental car:");
         for (InvoiceItems item : invoiceItems) {
-            pw.println("ID Nr. " + item.getRentalCar().getId());
+            pw.println("Vehicle Identification Number (VIN): " + item.getRentalCar().getVehicleID());
             pw.println("Model name: " + item.getRentalCar().getModelName());
         }
         pw.println("");

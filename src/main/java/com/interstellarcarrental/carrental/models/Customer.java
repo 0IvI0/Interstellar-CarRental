@@ -2,13 +2,22 @@ package com.interstellarcarrental.carrental.models;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Data;
 
 
 @Data
+@Entity
+@Table(name = "CUSTOMER")
 public class Customer {
 
-    private Long id;
+    @Id
+    @GeneratedValue
+    private long id;
     private String firstName;
     private String lastName;
     private Date birthDate;
