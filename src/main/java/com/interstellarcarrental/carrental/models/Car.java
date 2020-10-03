@@ -21,6 +21,7 @@ public class Car {
     private String manufacturingDate;
     private String propellantType;
     private double kilometerReading;
+    private boolean kilometerReadingCleared;
     private double basicPrice;
     private double valueAddedTax;
     private String description;
