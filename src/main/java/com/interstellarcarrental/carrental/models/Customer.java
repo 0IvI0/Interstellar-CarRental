@@ -30,6 +30,5 @@ public class Customer {
 
     public String getCustomerName() {
          return this.firstName + " " + this.lastName;
-    }
-    
+    } 
 }

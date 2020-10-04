@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class InvoiceService {
 
+    static final String NOTFOUND_MESSAGE = "Invoice not found.";
+
     @Autowired
     private InvoiceRepository invoiceRepository;
 
@@ -48,5 +50,30 @@ public class InvoiceService {
 
     public List<Invoice> getInvoiceByPaidInvoice(boolean paidInvoice) {
         return invoiceRepository.findByPaidInvoice(paidInvoice);
+    }
+
+
+    //DELETE method:
+
+    public String deleteInvoiceById(long id) {
+        if (!invoiceRepository.findById(id).isPresent()) {
+            return "No item found with the provided ID.";
+        }
+        if (invoiceRepository.findById(id).get().getInvoiceOwner().equals(null)) {
+            invoiceRepository.deleteById(id);
+            return "Invoice with the ID " + id + " has been deleted.";
+        }
+        return "The invoice with the ID " + id + " cannot be deleted because it belongs to the customer: " + invoiceRepository.findById(id).get().getInvoiceOwner().getId();
+    }
+
+
+    //PUT method:
+    
+    public String updateDiscount(Invoice invoice, double newDiscount) {
+        if (invoiceRepository.findById(invoice.getId()).isPresent()) {
+        invoiceRepository.findById(invoice.getId()).get().setDiscount(newDiscount);
+        return "The following discount has been added to the invoice with the ID " + invoice.getId() + " and the invoice number " + invoice.getInvoiceNumber() + ": " + invoice.getDiscount() + " %";
+        }
+        return NOTFOUND_MESSAGE;
     }
 }

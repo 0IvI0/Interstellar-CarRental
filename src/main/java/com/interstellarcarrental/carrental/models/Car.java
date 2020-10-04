@@ -21,7 +21,7 @@ public class Car {
     private String manufacturingDate;
     private String propellantType;
     private double kilometerReading;
-    private boolean kilometerReadingCleared;
+    private boolean kilometerReadingCleared = false;
     private double basicPrice;
     private double valueAddedTax;
     private String description;
@@ -35,4 +35,9 @@ public class Car {
     private boolean temperatureControlSystem;
     private boolean safetySystem;
     private boolean storageCabinet;
+
+    public void clearKilometerReading() {
+        kilometerReading = 0.0;
+        kilometerReadingCleared = true;
+    }
 }
