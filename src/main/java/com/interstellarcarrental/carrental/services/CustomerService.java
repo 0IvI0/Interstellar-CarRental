@@ -40,6 +40,10 @@ public class CustomerService {
         return dtoConverter.customerListEntityToDTO(customerRepository.findAll());
     }
 
+    public CustomerDTO getCustomerByUsername(String username) {
+        return dtoConverter.customerEntityToDTO(customerRepository.findByUsername(username));
+    }
+
 /*     public Customer getCustomerById(long id) {
         return customerRepository.findById(id).orElse(null);
     } */

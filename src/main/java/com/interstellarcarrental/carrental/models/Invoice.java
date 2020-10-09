@@ -85,7 +85,7 @@ public class Invoice {
         pw.println("");
         pw.println("Invoice nr. " + this.invoiceNumber);
         pw.print("To:  ");
-        pw.println(this.getInvoiceOwner().getCustomerName());
+        pw.println(this.getInvoiceOwner().getUsersName());
         pw.println("     " + this.getInvoiceOwner().getAddress());
         pw.println("");
         pw.println("Rental car:");

@@ -2,10 +2,11 @@ package com.interstellarcarrental.carrental.services;
 
 import java.util.List;
 
+import com.interstellarcarrental.carrental.dto.CustomerDTO;
 import com.interstellarcarrental.carrental.dto.DTOconverter;
 import com.interstellarcarrental.carrental.dto.InvoiceDTO;
-import com.interstellarcarrental.carrental.models.Customer;
 import com.interstellarcarrental.carrental.models.Invoice;
+import com.interstellarcarrental.carrental.repositories.CustomerRepository;
 import com.interstellarcarrental.carrental.repositories.InvoiceRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class InvoiceService {
 
     @Autowired
     private InvoiceRepository invoiceRepository;
+    @Autowired
+    private CustomerRepository customerRepo;
     @Autowired
     private DTOconverter dtoConverter;
 
@@ -44,8 +47,9 @@ public class InvoiceService {
         return invoiceRepository.findById(id).orElse(null);
     } */
 
-    public List<InvoiceDTO> getInvoiceByInvoiceOwner(Customer invoiceOwner) {
-        return dtoConverter.invoiceListEntityToDTO(invoiceRepository.findByInvoiceOwner(invoiceOwner));
+    public List<InvoiceDTO> getInvoiceByInvoiceOwner(CustomerDTO invoiceOwnerDTO) {
+        String email = invoiceOwnerDTO.getEmailAddress();
+        return dtoConverter.invoiceListEntityToDTO(invoiceRepository.findByInvoiceOwner(customerRepo.findByEmailAddressIgnoreCase(email)));
     }
 
     public InvoiceDTO getInvoiceByInvoiceNumber(int invoiceNumber) {
