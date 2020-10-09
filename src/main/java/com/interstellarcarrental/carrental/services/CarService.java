@@ -2,6 +2,8 @@ package com.interstellarcarrental.carrental.services;
 
 import java.util.List;
 
+import com.interstellarcarrental.carrental.dto.CarDTO;
+import com.interstellarcarrental.carrental.dto.DTOconverter;
 import com.interstellarcarrental.carrental.models.Car;
 import com.interstellarcarrental.carrental.repositories.CarRepository;
 
@@ -16,51 +18,53 @@ public class CarService {
 
     @Autowired
     private CarRepository carRepository;
+    @Autowired
+    private DTOconverter dtoConverter;
 
 
 //POST method:
 
-    public Car saveCar(Car car) {
-        return carRepository.save(car);
+    public Car saveCar(CarDTO carDto) {
+        return carRepository.save(dtoConverter.carDTOtoEntity(carDto));
     }
 
-    public List<Car> saveCars(List<Car> cars) {
-        return carRepository.saveAll(cars);
+    public List<Car> saveCars(List<CarDTO> carsDto) {
+        return carRepository.saveAll(dtoConverter.carListDTOtoEntity(carsDto));
     }
 
 
 //GET method:
 
-    public List<Car> getCars() {
-        return carRepository.findAll();
+    public List<CarDTO> getCars() {
+        return dtoConverter.carListEntityToDTO(carRepository.findAll());
     }
 
-    public Car getCarById(long id) {
+/*     public Car getCarById(long id) {
         return carRepository.findById(id).orElse(null);
     }
-
-    public Car getCarByVehicleID(String vehicleID) {
-        return carRepository.findByVehicleIDIgnoreCase(vehicleID);
+*/
+    public CarDTO getCarByVehicleID(String vehicleID) {
+        return dtoConverter.carEntityToDTO(carRepository.findByVehicleIDIgnoreCase(vehicleID));
     }
 
-    public List<Car> getCarByModelName(String modelName) {
-        return carRepository.findByModelNameIgnoreCase(modelName);
+    public List<CarDTO> getCarsByModelName(String modelName) {
+        return dtoConverter.carListEntityToDTO(carRepository.findByModelNameIgnoreCase(modelName));
     }
 
-    public List<Car> getCarByKilometerReadingCleared(boolean kilometerReadingCleared) {
-        return carRepository.findByKilometerReadingCleared(kilometerReadingCleared);
+    public List<CarDTO> getCarByKilometerReadingCleared(boolean kilometerReadingCleared) {
+        return dtoConverter.carListEntityToDTO(carRepository.findByKilometerReadingCleared(kilometerReadingCleared));
     }
 
-    public List<Car> getCarByBasicPrice(double basicPrice) {
-        return carRepository.findByBasicPrice(basicPrice);
+    public List<CarDTO> getCarByBasicPrice(double basicPrice) {
+        return dtoConverter.carListEntityToDTO(carRepository.findByBasicPrice(basicPrice));
     }
 
-    public List<Car> getCarByAvailableForRent(boolean availableForRent) {
-        return carRepository.findByAvailableForRent(availableForRent);
+    public List<CarDTO> getCarByAvailableForRent(boolean availableForRent) {
+        return dtoConverter.carListEntityToDTO(carRepository.findByAvailableForRent(availableForRent));
     }
 
-    public List<Car> getCarBySeatNumber(int seatNumber) {
-        return carRepository.findBySeatNumber(seatNumber);
+    public List<CarDTO> getCarBySeatNumber(int seatNumber) {
+        return dtoConverter.carListEntityToDTO(carRepository.findBySeatNumber(seatNumber));
     }
 
 

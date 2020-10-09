@@ -2,6 +2,8 @@ package com.interstellarcarrental.carrental.services;
 
 import java.util.List;
 
+import com.interstellarcarrental.carrental.dto.DTOconverter;
+import com.interstellarcarrental.carrental.dto.InvoiceDTO;
 import com.interstellarcarrental.carrental.models.Customer;
 import com.interstellarcarrental.carrental.models.Invoice;
 import com.interstellarcarrental.carrental.repositories.InvoiceRepository;
@@ -17,39 +19,41 @@ public class InvoiceService {
 
     @Autowired
     private InvoiceRepository invoiceRepository;
+    @Autowired
+    private DTOconverter dtoConverter;
 
 
 //POST method:    
 
-    public Invoice saveInvoice(Invoice invoice) {
-        return invoiceRepository.save(invoice);
+    public Invoice saveInvoice(InvoiceDTO invoiceDto) {
+        return invoiceRepository.save(dtoConverter.invoiceDTOtoEntity(invoiceDto));
     }
 
-    public List<Invoice> saveInvoices(List<Invoice> invoices) {
-        return invoiceRepository.saveAll(invoices);
+    public List<Invoice> saveInvoices(List<InvoiceDTO> invoicesDto) {
+        return invoiceRepository.saveAll(dtoConverter.invoiceListDTOtoEntity(invoicesDto));
     }
 
 
 //GET method:
 
-    public List<Invoice> getInvoices() {
-        return invoiceRepository.findAll();
+    public List<InvoiceDTO> getInvoices() {
+        return dtoConverter.invoiceListEntityToDTO(invoiceRepository.findAll());
     }
 
-    public Invoice getInvoiceById(long id) {
+/*     public Invoice getInvoiceById(long id) {
         return invoiceRepository.findById(id).orElse(null);
+    } */
+
+    public List<InvoiceDTO> getInvoiceByInvoiceOwner(Customer invoiceOwner) {
+        return dtoConverter.invoiceListEntityToDTO(invoiceRepository.findByInvoiceOwner(invoiceOwner));
     }
 
-    public Invoice getInvoiceByInvoiceOwner(Customer invoiceOwner) {
-        return invoiceRepository.findByInvoiceOwner(invoiceOwner);
+    public InvoiceDTO getInvoiceByInvoiceNumber(int invoiceNumber) {
+        return dtoConverter.invoiceEntityToDTO(invoiceRepository.findByInvoiceNumber(invoiceNumber));
     }
 
-    public Invoice getInvoiceByInvoiceNumber(int invoiceNumber) {
-        return invoiceRepository.findByInvoiceNumber(invoiceNumber);
-    }
-
-    public List<Invoice> getInvoiceByPaidInvoice(boolean paidInvoice) {
-        return invoiceRepository.findByPaidInvoice(paidInvoice);
+    public List<InvoiceDTO> getInvoiceByPaidInvoice(boolean paidInvoice) {
+        return dtoConverter.invoiceListEntityToDTO(invoiceRepository.findByPaidInvoice(paidInvoice));
     }
 
 

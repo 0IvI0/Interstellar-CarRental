@@ -3,6 +3,8 @@ package com.interstellarcarrental.carrental.services;
 import java.sql.Date;
 import java.util.List;
 
+import com.interstellarcarrental.carrental.dto.CustomerDTO;
+import com.interstellarcarrental.carrental.dto.DTOconverter;
 import com.interstellarcarrental.carrental.models.Customer;
 import com.interstellarcarrental.carrental.repositories.CustomerRepository;
 
@@ -17,47 +19,49 @@ public class CustomerService {
     
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private DTOconverter dtoConverter;
 
 
 //POST method:
 
-    public Customer saveCustomer(Customer customer) {
-        return customerRepository.save(customer);
+    public Customer saveCustomer(CustomerDTO customerDto) {
+        return customerRepository.save(dtoConverter.customerDTOtoEntity(customerDto));
     }
 
-    public List<Customer> saveCustomers(List<Customer> customers) {
-        return customerRepository.saveAll(customers);
+    public List<Customer> saveCustomers(List<CustomerDTO> customersDto) {
+        return customerRepository.saveAll(dtoConverter.customerListDTOtoEntity(customersDto));
     }
 
 
 //GET method:
 
-    public List<Customer> getCustomers() {
-        return customerRepository.findAll();
+    public List<CustomerDTO> getCustomers() {
+        return dtoConverter.customerListEntityToDTO(customerRepository.findAll());
     }
 
-    public Customer getCustomerById(long id) {
+/*     public Customer getCustomerById(long id) {
         return customerRepository.findById(id).orElse(null);
+    } */
+
+    public List<CustomerDTO> getCustomerByLastnameIgnoreCaseOrderByFirstnameAsc(String lastname) {
+        return dtoConverter.customerListEntityToDTO(customerRepository.findByLastnameIgnoreCaseOrderByFirstnameAsc(lastname));
     }
 
-    public List<Customer> getCustomerByLastnameIgnoreCaseOrderByFirstnameAsc(String lastname) {
-        return customerRepository.findByLastnameIgnoreCaseOrderByFirstnameAsc(lastname);
+    public List<CustomerDTO> getCustomerByLastName(String lastName) {
+        return dtoConverter.customerListEntityToDTO(customerRepository.findByLastNameIgnoreCase(lastName));
     }
 
-    public List<Customer> getCustomerByLastName(String lastName) {
-        return customerRepository.findByLastNameIgnoreCase(lastName);
+    public List<CustomerDTO> getCustomerByFirstName(String firstName) {
+        return dtoConverter.customerListEntityToDTO(customerRepository.findByFirstNameIgnoreCase(firstName));
     }
 
-    public List<Customer> getCustomerByFirstName(String firstName) {
-        return customerRepository.findByFirstNameIgnoreCase(firstName);
+    public List<CustomerDTO> getCustomerByBirthDate(Date birthDate) {
+        return dtoConverter.customerListEntityToDTO(customerRepository.findByBirthDate(birthDate));
     }
 
-    public List<Customer> getCustomerByBirthDate(Date birthDate) {
-        return customerRepository.findByBirthDate(birthDate);
-    }
-
-    public Customer getCustomerByEmailAddress(String emailAddress) {
-        return customerRepository.findByEmailAddressIgnoreCase(emailAddress);
+    public CustomerDTO getCustomerByEmailAddress(String emailAddress) {
+        return dtoConverter.customerEntityToDTO(customerRepository.findByEmailAddressIgnoreCase(emailAddress));
     }
 
 
