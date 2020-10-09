@@ -33,9 +33,9 @@ public class Invoice {
     private Customer invoiceOwner;
     private boolean paidInvoice = false;
     private List<InvoiceItems> invoiceItems = new LinkedList<>();
-    final int invoiceNumber;
+    private final int invoiceNumber;
 
-    Invoice(Customer invoiceOwner) {
+    public Invoice(final Customer invoiceOwner) {
         this.invoiceOwner = invoiceOwner;
         this.invoiceNumber = Invoice.calculateNextInvoiceNumber();
     }

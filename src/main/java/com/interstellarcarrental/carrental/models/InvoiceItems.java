@@ -11,7 +11,7 @@ public class InvoiceItems {
     //private int amount;
     private Car rentalCar;
 
-    InvoiceItems(final Car rentalCar) {
+    public InvoiceItems(final Car rentalCar) {
         this.setRentalCar(rentalCar);
     }
 
