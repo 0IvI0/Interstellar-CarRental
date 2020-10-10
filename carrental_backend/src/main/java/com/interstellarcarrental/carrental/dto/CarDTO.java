@@ -7,6 +7,7 @@ import lombok.Data;
 public class CarDTO {
 
     private String vehicleID;
+    private String imgURL;
     private String modelName;
     private String manufacturingDate;
     private String propellantType;

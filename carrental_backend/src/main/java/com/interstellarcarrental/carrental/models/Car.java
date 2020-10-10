@@ -17,6 +17,7 @@ public class Car {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String vehicleID;
+    private String imgURL;
     private String modelName;
     private String manufacturingDate;
     private String propellantType;
