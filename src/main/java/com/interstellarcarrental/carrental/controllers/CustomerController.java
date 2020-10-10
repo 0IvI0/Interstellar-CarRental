@@ -20,7 +20,7 @@ public class CustomerController {
     private CustomerService customerService;
 
 
-    //POST MAPPING
+//POST MAPPING
 
     @PostMapping("/createCustomer")
     public String saveCustomer(CustomerDTO customerDto) {
@@ -29,9 +29,10 @@ public class CustomerController {
     }
 
 
-    //GET MAPPING
+//GET MAPPING
 
-    //For employee
+//For employee
+
     @GetMapping("/listCustomers")
     public List<CustomerDTO> listCustomers() {
         return customerService.getCustomers();
@@ -42,22 +43,22 @@ public class CustomerController {
         return customerService.getCustomerByUsername(username);
     }
 
-    @GetMapping("/listCustomers/{lastName}")
+    @GetMapping("/listCustomer/{lastName}")
     public List<CustomerDTO> listCustomersMatchingLastName(@PathVariable String lastName) {
         return customerService.getCustomerByLastnameIgnoreCaseOrderByFirstnameAsc(lastName);
     }
 
-    @GetMapping("/listCustomers/{firstName}")
+    @GetMapping("/listCustomer/{firstName}")
     public List<CustomerDTO> listCustomersMatchingFirstName(@PathVariable String firstName) {
         return customerService.getCustomerByFirstName(firstName);
     }
 
-    @GetMapping("/listCustomers/{birthDate}")
+    @GetMapping("/listCustomer/{birthDate}")
     public List<CustomerDTO> listCustomersByBirthDate(@PathVariable Date birthdate) {
         return customerService.getCustomerByBirthDate(birthdate);
     }
 
-    @GetMapping("/listCustomers/{emailAddress}")
+    @GetMapping("/listCustomer/{emailAddress}")
     public CustomerDTO getCustomerMatchingEmailAddress(@PathVariable String emailAddress) {
         return customerService.getCustomerByEmailAddress(emailAddress);
     }
