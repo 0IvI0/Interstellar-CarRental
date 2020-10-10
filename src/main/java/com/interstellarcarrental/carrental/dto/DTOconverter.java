@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.interstellarcarrental.carrental.models.Car;
 import com.interstellarcarrental.carrental.models.Customer;
+import com.interstellarcarrental.carrental.models.Employee;
 import com.interstellarcarrental.carrental.models.Invoice;
 
 import org.springframework.beans.BeanUtils;
@@ -65,6 +66,33 @@ public class DTOconverter {
         List<Customer> newCustomersList = new ArrayList<>();
         BeanUtils.copyProperties(customersDto, newCustomersList);
         return newCustomersList;
+    }
+
+
+    //EMPLOYEE ENTITY <-> DTO
+
+    public EmployeeDTO employeeEntityToDTO(Employee employee) {
+        EmployeeDTO newEmployeeDTO = new EmployeeDTO();
+        BeanUtils.copyProperties(employee, newEmployeeDTO);
+        return newEmployeeDTO;
+    }
+
+    public List<EmployeeDTO> employeeListEntityToDTO(List<Employee> employees) {
+        List<EmployeeDTO> newEmployeeListDto = new ArrayList<>();
+        BeanUtils.copyProperties(employees, newEmployeeListDto);
+        return newEmployeeListDto;
+    }
+
+    public Employee employeeDTOtoEntity(EmployeeDTO employeeDTO) {
+        Employee newEmployee = new Employee();
+        BeanUtils.copyProperties(employeeDTO, newEmployee);
+        return newEmployee;
+    }
+
+    public List<Employee> employeeListDTOtoEntity(List<EmployeeDTO> employeesDto) {
+        List<Employee> newEmployeesList = new ArrayList<>();
+        BeanUtils.copyProperties(employeesDto, newEmployeesList);
+        return newEmployeesList;
     }
 
 
