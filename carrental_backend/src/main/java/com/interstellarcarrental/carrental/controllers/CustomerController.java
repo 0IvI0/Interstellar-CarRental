@@ -1,5 +1,6 @@
 package com.interstellarcarrental.carrental.controllers;
 
+import java.security.Principal;
 import java.sql.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -18,6 +20,12 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+      return user;
+    }
 
 
 //POST MAPPING
@@ -45,7 +53,7 @@ public class CustomerController {
 
     @GetMapping("/listCustomer/{lastName}")
     public List<CustomerDTO> listCustomersMatchingLastName(@PathVariable String lastName) {
-        return customerService.getCustomerByLastnameIgnoreCaseOrderByFirstnameAsc(lastName);
+        return customerService.getCustomerByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
     }
 
     @GetMapping("/listCustomer/{firstName}")
