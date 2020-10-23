@@ -1,4 +1,4 @@
-package com.interstellarcarrental.carrental.models;
+/* package com.interstellarcarrental.carrental.models;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,3 +23,4 @@ public class InvoiceItems {
         return this.getRentalCar().getKilometerReading() * 1.5;
     }
 }
+ */
