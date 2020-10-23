@@ -44,12 +44,12 @@ public class CustomerService {
         return dtoConverter.customerEntityToDTO(customerRepository.findByUsername(username));
     }
 
-/*     public Customer getCustomerById(long id) {
+    public Customer getCustomerById(long id) {
         return customerRepository.findById(id).orElse(null);
-    } */
+    }
 
-    public List<CustomerDTO> getCustomerByLastnameIgnoreCaseOrderByFirstnameAsc(String lastname) {
-        return dtoConverter.customerListEntityToDTO(customerRepository.findByLastnameIgnoreCaseOrderByFirstnameAsc(lastname));
+    public List<CustomerDTO> getCustomerByLastNameIgnoreCaseOrderByFirstNameAsc(String lastName) {
+        return dtoConverter.customerListEntityToDTO(customerRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName));
     }
 
     public List<CustomerDTO> getCustomerByLastName(String lastName) {
