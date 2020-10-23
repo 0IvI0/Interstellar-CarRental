@@ -44,12 +44,12 @@ public class EmployeeService {
         return dtoConverter.employeeEntityToDTO(employeeRepository.findByUsername(username));
     }
 
-/*     public Employee getEmployeeById(long id) {
+    public Employee getEmployeeById(long id) {
         return employeeRepository.findById(id).orElse(null);
-    } */
+    }
 
-    public List<EmployeeDTO> getEmployeeByLastnameIgnoreCaseOrderByFirstnameAsc(String lastname) {
-        return dtoConverter.employeeListEntityToDTO(employeeRepository.findByLastnameIgnoreCaseOrderByFirstnameAsc(lastname));
+    public List<EmployeeDTO> getEmployeeByLastNameIgnoreCaseOrderByFirstNameAsc(String lastName) {
+        return dtoConverter.employeeListEntityToDTO(employeeRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName));
     }
 
     public List<EmployeeDTO> getEmployeeByLastName(String lastName) {

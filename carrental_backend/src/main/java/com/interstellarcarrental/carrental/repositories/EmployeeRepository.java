@@ -11,11 +11,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Employee findByUsername(String username);
+    Employee findByEmployeeID(String employeeID);
     Employee findByEmailAddressIgnoreCase(String emailAddress);
     List<Employee> findByLastNameIgnoreCase(String lastName);
     List<Employee> findByFirstNameIgnoreCase(String firstName);
     List<Employee> findByBirthDate(Date birthDate);
     List<Employee> findByUserRole(String userRole);
 
-    List<Employee> findByLastnameIgnoreCaseOrderByFirstnameAsc(String lastname);  
+    List<Employee> findByLastNameIgnoreCaseOrderByFirstNameAsc(String lastName);  
 }

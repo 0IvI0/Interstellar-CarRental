@@ -1,26 +1,40 @@
 package com.interstellarcarrental.carrental.models;
 
+import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
 
 @Data
-@EqualsAndHashCode(callSuper=true)
 @Entity
 @Table(name = "EMPLOYEE")
-public class Employee extends AllUsers {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private final String userRole = "EMPLOYEE_role";
+    private String employeeID;
 
-    public Employee() {
-        super("EMPLOYEE_STANDARD");
-    }
+    @OneToMany
+    private List<Invoice> invoiceList;
+
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private Date birthDate;
+    private String emailAddress;
+    private String phoneNumber;
+    private String address;
+    private String creditCardNumber;
 }

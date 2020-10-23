@@ -45,7 +45,7 @@ public class EmployeeController {
 
     @GetMapping("/company/listEmployee/{lastName}")
     public List<EmployeeDTO> listEmployeesMatchingLastName(@PathVariable String lastName) {
-        return employeeService.getEmployeeByLastnameIgnoreCaseOrderByFirstnameAsc(lastName);
+        return employeeService.getEmployeeByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
     }
 
     @GetMapping("/company/listEmployee/{firstName}")
