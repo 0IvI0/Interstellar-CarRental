@@ -1,0 +1,54 @@
+.logoImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.homePageCard {
+    max-width: fit-content;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.welcomeText {
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 25px black, 0 0 5px darkblue;
+    font-size: 1.2rem;
+}
+
+.starsText {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
+                -2px -2px 5px yellow,
+                -1px -1px 5px yellow,
+                1px 1px 5px yellow,
+                2px 2px 5px yellow,
+                4px 4px 5px yellow;
+}
+
+.InterstellarCarRentalText {
+    font-size: 1.8rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 
+                -2px -2px 5px lightblue,
+                -1px -1px 5px lightblue,
+                1px 1px 5px lightblue,
+                2px 2px 5px lightblue,
+                4px 4px 4px lightblue;
+}
+
+.homepageLinks {
+    text-align: center;
+    color: white;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
+    -2px -2px 5px black,
+    -1px -1px 5px black,
+    1px 1px 5px black,
+    2px 2px 5px black,
+    4px 4px 5px black;
+}
+
+.simpleLink:hover {
+    font-size: 120%;
+    text-shadow: 2px 2px 5px white;
+}
