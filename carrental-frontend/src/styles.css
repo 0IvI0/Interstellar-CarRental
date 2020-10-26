@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background: radial-gradient(#000033, #00004d);
+    background-size: 100% 100%;
+    background-image: url("\assets\images\backgroundImg\bgImg.png");
+    background-size: cover;
+  }
+
+
+.w3-sansitaSwashed {
+    font-family: 'Sansita Swashed', cursive, Verdana, Tahoma, sans-serif;
+  }
