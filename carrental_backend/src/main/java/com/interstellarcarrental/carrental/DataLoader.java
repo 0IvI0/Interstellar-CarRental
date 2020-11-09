@@ -1,19 +1,34 @@
 package com.interstellarcarrental.carrental;
 
-import com.interstellarcarrental.carrental.models.Car;
-import com.interstellarcarrental.carrental.repositories.CarRepository;
+import java.time.LocalDate;
 
+import com.interstellarcarrental.carrental.models.Car;
+import com.interstellarcarrental.carrental.models.Customer;
+import com.interstellarcarrental.carrental.models.Employee;
+import com.interstellarcarrental.carrental.repositories.CarRepository;
+import com.interstellarcarrental.carrental.repositories.CustomerRepository;
+import com.interstellarcarrental.carrental.repositories.EmployeeRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     
-    private final CarRepository carRepo;
+	private final CarRepository carRepo;
+	private final CustomerRepository custRepo;
+	private final EmployeeRepository employeeRepo;
 
-    public DataLoader(CarRepository carRepo) {
-        this.carRepo = carRepo;
+	@Autowired
+	private PasswordEncoder pwEncoder;
+
+    public DataLoader(CarRepository carRepo, CustomerRepository custRepo, EmployeeRepository employeeRepo) {
+		this.carRepo = carRepo;
+		this.custRepo = custRepo;
+		this.employeeRepo = employeeRepo;
     }
 
 
@@ -95,6 +110,37 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		car3.setTemperatureControlSystem(true);
         car3.setValueAddedTax(10.0);
         
-        carRepo.save(car3);
-    }
+		carRepo.save(car3);
+
+
+
+	// First Customer object:
+		Customer cust1 = new Customer();
+		cust1.setAddress("Baker Street 12.");
+		cust1.setBirthDate(LocalDate.of(1978, 01, 23));
+		cust1.setCreditCardNumber("DFG3445FGDFH");
+		cust1.setEmailAddress("email@address");
+		cust1.setFirstName("John");
+		cust1.setLastName("Doe");
+		cust1.setUsername("Jd007");
+		cust1.setPassword(pwEncoder.encode("secretPassword"));
+		cust1.setPhoneNumber("+23434345");
+
+		custRepo.save(cust1);
+
+
+	// First Employee object:
+		Employee employee1 = new Employee();
+		employee1.setAddress("NewYork Street 12.");
+		employee1.setBirthDate(LocalDate.of(1963, 03, 12));
+		employee1.setCreditCardNumber("DFG3FG87545");
+		employee1.setEmailAddress("email2@address");
+		employee1.setFirstName("Jane");
+		employee1.setLastName("McDonald");
+		employee1.setUsername("TheEmployEE");
+		employee1.setPassword(pwEncoder.encode("empPassword"));
+		employee1.setPhoneNumber("+547678767");
+
+		employeeRepo.save(employee1);
+	}
 }
