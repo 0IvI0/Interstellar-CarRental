@@ -10,12 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class CarService {
 
-  carListUrl : string = 'https://localhost:8080/listCars';
+  carListUrl: string = '/api/listCars';
+  carLimit = '?_limit=8';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
-  getCarList():Observable<Car[]> {
+  getCarList(): Observable<Car[]> {
     return this.http.get<Car[]>(this.carListUrl);
   }
 
