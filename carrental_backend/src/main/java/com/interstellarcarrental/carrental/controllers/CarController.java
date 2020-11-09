@@ -23,7 +23,7 @@ public class CarController {
 
     //POST MAPPING
 
-    @PostMapping("/addCar")
+    @PostMapping("/employee/addCar")
     public String saveCar(CarDTO carDto) {
         carService.saveCar(carDto);
         return "The car has been added successfully.";
@@ -32,38 +32,38 @@ public class CarController {
     
     //GET MAPPING
 
-    @GetMapping("/listCars")
+    @GetMapping("/api/listCars")
     public List<CarDTO> listCars() {
         return carService.getCars();
     }
 
-    @GetMapping("/listCars/{model}")
+    @GetMapping("/api/listCars/{model}")
     public List<CarDTO> listCarsMatchingModelName(@PathVariable String model) {
         return carService.getCarsByModelName(model);
     }
 
-    @GetMapping("/listCars/{kmReadingCleared}")
+    @GetMapping("/api/listCars/{kmReadingCleared}")
     public List<CarDTO> listCarsWithClearedKilometerReading(@PathVariable boolean kmReadingCleared) {
         return carService.getCarByKilometerReadingCleared(kmReadingCleared);
     }
 
-    @GetMapping("/listCars/{basicPrice}")
+    @GetMapping("/api/listCars/{basicPrice}")
     public List<CarDTO> listCarsByBasicPrice(@PathVariable double basicPrice) {
         return carService.getCarByBasicPrice(basicPrice);
     }
 
-    @GetMapping("/listCars/{availability}")
+    @GetMapping("/api/listCars/{availability}")
     public List<CarDTO> listCarsAvailableForRent(@PathVariable boolean availability) {
         return carService.getCarByAvailableForRent(availability);
     }
 
-    @GetMapping("/listCars/{seatNumber}")
+    @GetMapping("/api/listCars/{seatNumber}")
     public List<CarDTO> listCarsMatchingSeatNumber(@PathVariable int seatNumber) {
         return carService.getCarBySeatNumber(seatNumber);
     }
 
     //Only for employee:
-    @GetMapping("/employee/listCars/{vehicleId}")
+    @GetMapping("/api/employee/listCars/{vehicleId}")
     public CarDTO getCarByVehicleId(@PathVariable String vehicleId) {
             return carService.getCarByVehicleID(vehicleId);
     }
