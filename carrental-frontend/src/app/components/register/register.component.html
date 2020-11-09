@@ -1,0 +1,62 @@
+<div class="registerCard w3-content w3-center">
+    <div class="registerContainer">
+
+        <div class="registerHeader">
+            <h4>Registration</h4>
+            <hr>
+        </div>
+
+        <div class="alreadyLoggedInInfo" *ngIf="sessionUser !== null">
+            "You are already logged in as {{ sessionUser.username }}."
+        </div>
+
+        <div class="registerBody" *ngIf="sessionUser === null">
+
+            <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+                <div class="allRegFields>">
+
+                    <div class="regFormCredentials">
+                        <div class="fieldUsername">
+                            <label> Username: </label>
+                            <input type="text" formControlName="username" required>
+                        </div>
+                        <div class="fieldPassword">
+                            <label> Password: </label>
+                            <input type="password" formControlName="password" required>
+                        </div>
+                    </div>    
+
+                    <div class="regFormName">
+                        <div class="fieldFirstName">
+                            <label> First name: </label>
+                            <input type="text" formControlName="firstName" required>
+                        </div>
+                        <div class="fieldLastName">
+                            <label> Last name: </label>
+                            <input type="text" formControlName="lastName" required>
+                        </div>
+                    </div>
+                    
+                </div>        
+
+                    <div class="regFormButtons">
+                        <button id="registerBtn" type="submit" [disabled]="!formRegister.valid">
+                            Register
+                        </button>
+
+                        <button id="cancelBtn"><a routerLinkActive="active" routerLink="/home">
+                            Cancel
+                            </a>
+                        </button>
+                    </div>
+
+                    <div id="regFormStatus">
+                        <p> Form status: {{ formRegister.status }} </p>
+                    </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>

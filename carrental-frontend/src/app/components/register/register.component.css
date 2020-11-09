@@ -1,0 +1,63 @@
+.registerCard {
+    max-height: fit-content;
+    max-width: fit-content;
+    background-color: rgb(39, 39, 39);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+}
+
+.registerContainer {
+    padding: 30px;
+}
+
+.allRegFields {
+    color: rgb(0,0,0);
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.fieldUsername, .fieldPassword, .fieldFirstName, .fieldLastName {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.regFormCredentials {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.regFormName {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.regFormButtons {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+#registerBtn, #cancelBtn {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.registerHeader, label {
+    color: rgb(202, 200, 200);
+}
+
+.registerHeader {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+#regFormStatus {
+    color: rgb(218, 117, 24);
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
