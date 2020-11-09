@@ -1,6 +1,6 @@
 package com.interstellarcarrental.carrental.controllers;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.interstellarcarrental.carrental.dto.EmployeeDTO;
@@ -33,32 +33,32 @@ public class EmployeeController {
 
 //For manager
 
-   @GetMapping("/company/listEmployees")
+   @GetMapping("/employee/mngr/listEmployees")
     public List<EmployeeDTO> listEmployees() {
         return employeeService.getEmployees();
     }
 
-    @GetMapping("/company/listEmployee/{username}")
+    @GetMapping("/employee/mngr/listEmployee/{username}")
     public EmployeeDTO getEmployeeOfUsername(@PathVariable String username) {
         return employeeService.getEmployeeByUsername(username);
     }
 
-    @GetMapping("/company/listEmployee/{lastName}")
+    @GetMapping("/employee/mngr/listEmployee/{lastName}")
     public List<EmployeeDTO> listEmployeesMatchingLastName(@PathVariable String lastName) {
         return employeeService.getEmployeeByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
     }
 
-    @GetMapping("/company/listEmployee/{firstName}")
+    @GetMapping("/employee/mngr/listEmployee/{firstName}")
     public List<EmployeeDTO> listEmployeesMatchingFirstName(@PathVariable String firstName) {
         return employeeService.getEmployeeByFirstName(firstName);
     }
 
-    @GetMapping("/company/listEmployee/{birthDate}")
-    public List<EmployeeDTO> listEmployeesByBirthDate(@PathVariable Date birthdate) {
+    @GetMapping("/employee/mngr/listEmployee/{birthDate}")
+    public List<EmployeeDTO> listEmployeesByBirthDate(@PathVariable LocalDate birthdate) {
         return employeeService.getEmployeeByBirthDate(birthdate);
     }
 
-    @GetMapping("/company/listEmployee/{emailAddress}")
+    @GetMapping("/employee/mngr/listEmployee/{emailAddress}")
     public EmployeeDTO getEmployeeMatchingEmailAddress(@PathVariable String emailAddress) {
         return employeeService.getEmployeeByEmailAddress(emailAddress);
     }
