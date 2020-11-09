@@ -1,6 +1,6 @@
 package com.interstellarcarrental.carrental.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.interstellarcarrental.carrental.models.Invoice;
@@ -15,7 +15,7 @@ public class EmployeeDTO {
     private String password;
     private String firstName;
     private String lastName;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String emailAddress;
     private String phoneNumber;
     private String address;
