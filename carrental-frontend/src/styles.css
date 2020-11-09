@@ -4,9 +4,15 @@ body{
     background-size: 100% 100%;
     background-image: url("\assets\images\backgroundImg\bgImg.png");
     background-size: cover;
+    background-repeat: space;
   }
 
 
 .w3-sansitaSwashed {
     font-family: 'Sansita Swashed', cursive, Verdana, Tahoma, sans-serif;
+  }
+
+
+  a {
+    text-decoration: none;
   }

@@ -1,13 +1,14 @@
-.logoImg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
 .homePageCard {
     max-width: fit-content;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(22, 21, 21, 0); /* 22,21,21,0.7 */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.cardPaddingContainer {
+    padding: 20px;
 }
 
 .welcomeText {
@@ -15,6 +16,8 @@
     color: white;
     text-shadow: 1px 1px 25px black, 0 0 5px darkblue;
     font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
 .starsText {
@@ -27,7 +30,7 @@
 }
 
 .InterstellarCarRentalText {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 
                 -2px -2px 5px lightblue,
                 -1px -1px 5px lightblue,
@@ -38,7 +41,7 @@
 
 .homepageLinks {
     text-align: center;
-    color: white;
+    color: rgba(247, 239, 239, 0.8);
     font-family: Tahoma, Verdana, sans-serif;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
     -2px -2px 5px black,
@@ -49,6 +52,6 @@
 }
 
 .simpleLink:hover {
-    font-size: 120%;
-    text-shadow: 2px 2px 5px white;
+    font-size: 110%;
+    text-shadow: 1px 1px 4px rgb(206, 206, 206);
 }

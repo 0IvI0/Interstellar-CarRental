@@ -1,1 +1,22 @@
+.homeButtonsCard {
+    max-width: fit-content;
+    background-color: rgba(22, 21, 21, 0);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
 
+.btnStyle {
+    color: rgba(28, 210, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.btnStyle:hover {
+    font-size: 110%;
+    font-weight: bold;
+}
