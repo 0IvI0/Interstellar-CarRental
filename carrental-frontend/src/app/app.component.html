@@ -1,25 +1,26 @@
-<div class="w3-container w3-right-align">
-  <button class="homeButton w3-right-align w3-button w3-black w3-padding-small"><a routerLinkActive="active" routerLink="/home">
-    Home
-    </a>
-  </button>
-  
-  <button class="regButton w3-right-align w3-button w3-black w3-padding-small"><a routerLinkActive="active" routerLink="/register">
-    Register
-    </a>
-  </button>
+<div class="w3-content w3-mobile">
 
-  <button class="loginButton w3-right-align w3-button w3-black w3-padding-small"><a routerLinkActive="active" routerLink="/login">
-    Login
-  </a>
-  </button>
+  <app-session-user></app-session-user>
 
-  <button class="logoutButton w3-right-align w3-button w3-black w3-padding-small"><a (click)="logout()">
-    Logout
-  </a>
-  </button>
-</div>
+  <div class="homeButtonsCard w3-content">
+      <button class="homeButton btnStyle"><a routerLinkActive="active" routerLink="/home">
+        Home
+        </a>
+      </button>
+      
+      <button class="regButton btnStyle" *ngIf="sessionUser === null"><a routerLinkActive="active" routerLink="/register">
+        Register
+        </a>
+      </button>
 
-<div class="container routerOutletBody">
-  <router-outlet></router-outlet>
+      <button class="loginButton btnStyle" *ngIf="sessionUser === null"><a routerLinkActive="active" routerLink="/login">
+        Login
+        </a>
+      </button>
+  </div>
+
+  <div class="routerOutletBody w3-content">
+    <router-outlet></router-outlet>
+  </div>
+
 </div>
