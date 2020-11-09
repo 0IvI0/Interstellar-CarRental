@@ -1,5 +1,16 @@
-<div class="carListCard">
-    <div class="carListText">
-        <p> {{ car.modelName }} </p>
+<div class="w3-content">
+
+    <div class="carListCard">
+
+        <div class="carListText">
+            <p> {{ car.modelName }} </p>
+            <p> {{ car.basicPrice | currency }} </p>
+        </div>
+
+        <div class="carListButtons">
+            <button id="rentBtn" (click)="onGoToRentConfirmPage"> Rent this vessel </button>
+        </div>
+
     </div>
+
 </div>

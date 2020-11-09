@@ -15,4 +15,9 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  onGoToRentConfirmPage(): void {
+    console.log('Rent button clicked.');
+  }
+
 }
