@@ -1,6 +1,6 @@
 package com.interstellarcarrental.carrental.services;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.interstellarcarrental.carrental.dto.CustomerDTO;
@@ -9,6 +9,7 @@ import com.interstellarcarrental.carrental.models.Customer;
 import com.interstellarcarrental.carrental.repositories.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -21,11 +22,14 @@ public class CustomerService {
     private CustomerRepository customerRepository;
     @Autowired
     private DTOconverter dtoConverter;
+    @Autowired
+    private PasswordEncoder pwEncoder;
 
 
 //POST method:
 
     public Customer saveCustomer(CustomerDTO customerDto) {
+        customerDto.setPassword(pwEncoder.encode(customerDto.getPassword()));
         return customerRepository.save(dtoConverter.customerDTOtoEntity(customerDto));
     }
 
@@ -60,7 +64,7 @@ public class CustomerService {
         return dtoConverter.customerListEntityToDTO(customerRepository.findByFirstNameIgnoreCase(firstName));
     }
 
-    public List<CustomerDTO> getCustomerByBirthDate(Date birthDate) {
+    public List<CustomerDTO> getCustomerByBirthDate(LocalDate birthDate) {
         return dtoConverter.customerListEntityToDTO(customerRepository.findByBirthDate(birthDate));
     }
 
