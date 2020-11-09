@@ -1,6 +1,6 @@
 package com.interstellarcarrental.carrental.repositories;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.interstellarcarrental.carrental.models.Customer;
@@ -14,7 +14,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     Customer findByEmailAddressIgnoreCase(String emailAddress);
     List<Customer> findByLastNameIgnoreCase(String lastName);
     List<Customer> findByFirstNameIgnoreCase(String firstName);
-    List<Customer> findByBirthDate(Date birthDate);
+    List<Customer> findByBirthDate(LocalDate birthDate);
 
     List<Customer> findByLastNameIgnoreCaseOrderByFirstNameAsc(String lastName);
 }

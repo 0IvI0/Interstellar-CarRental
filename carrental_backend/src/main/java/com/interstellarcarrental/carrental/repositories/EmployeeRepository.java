@@ -1,6 +1,6 @@
 package com.interstellarcarrental.carrental.repositories;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.interstellarcarrental.carrental.models.Employee;
@@ -15,7 +15,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Employee findByEmailAddressIgnoreCase(String emailAddress);
     List<Employee> findByLastNameIgnoreCase(String lastName);
     List<Employee> findByFirstNameIgnoreCase(String firstName);
-    List<Employee> findByBirthDate(Date birthDate);
+    List<Employee> findByBirthDate(LocalDate birthDate);
     List<Employee> findByUserRole(String userRole);
 
     List<Employee> findByLastNameIgnoreCaseOrderByFirstNameAsc(String lastName);  

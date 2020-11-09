@@ -1,6 +1,6 @@
 package com.interstellarcarrental.carrental.services;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.interstellarcarrental.carrental.dto.DTOconverter;
@@ -60,7 +60,7 @@ public class EmployeeService {
         return dtoConverter.employeeListEntityToDTO(employeeRepository.findByFirstNameIgnoreCase(firstName));
     }
 
-    public List<EmployeeDTO> getEmployeeByBirthDate(Date birthDate) {
+    public List<EmployeeDTO> getEmployeeByBirthDate(LocalDate birthDate) {
         return dtoConverter.employeeListEntityToDTO(employeeRepository.findByBirthDate(birthDate));
     }
 
