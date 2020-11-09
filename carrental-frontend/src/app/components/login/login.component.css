@@ -1,0 +1,47 @@
+.loginCard {
+    max-height: fit-content;
+    max-width: fit-content;
+    background-color: rgb(39, 39, 39);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+}
+
+.loginContainer {
+    padding: 30px;
+}
+
+.loginFormCredentials {
+    color: rgb(0,0,0);
+    display: block;
+    margin-bottom: 30px;
+}
+
+.fieldUsername, .fieldPassword {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#loginButton, #cancelButton {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.loginHeader, label {
+    color: rgb(202, 200, 200);
+}
+
+.loginHeader {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+#formStatus {
+    color: rgb(218, 117, 24);
+    margin-top: 60px;
+    margin-bottom: 20px;
+}

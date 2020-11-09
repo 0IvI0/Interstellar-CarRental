@@ -1,20 +1,48 @@
-<!-- <div class="alert alert-danger" [hidden]="!error">
-	There was a problem logging in. Please try again.
-</div> -->
+<div class="loginCard w3-content w3-center">
+    <div class="loginContainer">
+    
+        <div class="loginHeader">
+            <h4>Login</h4>
+            <hr>
+        </div>
 
-<!-- <form role="form" (submit)="login()">
-	<div class="form-group">
-		<label for="username">Username:</label> <input type="text"
-			class="form-control" id="username" name="username" [(ngModel)]="credentials.username"/>
-	</div>
-	<div class="form-group">
-		<label for="password">Password:</label> <input type="password"
-			class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
- -->
+        <div class="alreadyLoggedInInfo" *ngIf="sessionUser !== null">
+            "You are already logged in as {{ sessionUser.username }}. If you would like to log in with different credentials, please log out first and log in again."
+        </div>
 
- <div class="w3-container" >
-	 <h1>LOGIN PAGE....form...</h1>
- </div>
+        <div class="loginBody" *ngIf="sessionUser === null">
+
+            <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+
+                <div class="loginFormCredentials">
+                    <div class="fieldUsername">
+                        <label> Username: </label>
+                        <input type="text" formControlName="username" required>
+                    </div>  
+                    <div class="fieldPassword">
+                        <label> Password: </label>
+                        <input type="password" formControlName="password" required>
+                    </div>    
+                </div>
+                    
+                <div class="loginFormButtons">
+                    <button id="loginButton" type="submit" [disabled]="!formLogin.valid">
+                        Login
+                    </button>
+
+                    <button id="cancelButton"><a routerLinkActive="active" routerLink="/home">
+                        Cancel
+                        </a>
+                    </button>
+                </div>
+
+                <div id="formStatus">
+                    <p> Form status: {{ formLogin.status }} </p>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
