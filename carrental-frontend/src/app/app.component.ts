@@ -1,26 +1,20 @@
-import { Component } from '@angular/core';
-/* import { HttpClient } from '@angular/common/http'; */
-import { Router } from '@angular/router';
-
-/* import { AppService } from './app.service'; */
+import { Component, OnInit } from '@angular/core';
+import { AppService } from './app.service';
+import { Customer } from './models/Customer';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(/* private app: AppService, */ /* private http: HttpClient, */ private router: Router) {
-    // this.app.authenticate(undefined, undefined);
+  sessionUser: Customer | null = null;
+
+  constructor(private app: AppService) {
   }
   
-  logout() {
-    console.log('logout function');
-/*     this.http.post('logout', {}).finally(() => {
-      this.app.authenticated = false;
-      this.router.navigateByUrl('/login');
-    }).subscribe(); */
+  ngOnInit() {
+    this.app.getSessionUser().subscribe(u => this.sessionUser = u);
   }
-
 }
