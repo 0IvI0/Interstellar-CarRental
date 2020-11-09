@@ -1,6 +1,7 @@
 package com.interstellarcarrental.carrental.models;
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,13 +17,13 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "CUSTOMER")
-public class Customer {
+public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private final String userRole = "CUSTOMER_role";
+    private final String userRole = "CUSTOMER";
 
     @OneToMany
     private List<Invoice> invoiceList;
@@ -31,7 +32,7 @@ public class Customer {
     private String password;
     private String firstName;
     private String lastName;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String emailAddress;
     private String phoneNumber;
     private String address;

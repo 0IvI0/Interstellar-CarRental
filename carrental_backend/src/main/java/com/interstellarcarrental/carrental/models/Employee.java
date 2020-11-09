@@ -1,6 +1,6 @@
 package com.interstellarcarrental.carrental.models;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private final String userRole = "EMPLOYEE_role";
+    private final String userRole = "EMPLOYEE";
     private String employeeID;
 
     @OneToMany
@@ -32,7 +32,7 @@ public class Employee {
     private String password;
     private String firstName;
     private String lastName;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String emailAddress;
     private String phoneNumber;
     private String address;
