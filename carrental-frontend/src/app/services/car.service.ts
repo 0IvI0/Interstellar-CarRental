@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarService {
 
   carListUrl: string = '/api/listCars';
+  carDetailUrl: string = '/api/cardetail';
   carLimit = '?_limit=8';
 
   constructor(private http: HttpClient) { }
@@ -18,6 +19,13 @@ export class CarService {
 
   getCarList(): Observable<Car[]> {
     return this.http.get<Car[]>(this.carListUrl);
+  }
+
+
+  //  URL to backend:     /api/cardetail/GTR5643D
+
+  getCar(vehicleID: string): Observable<Car> {
+    return this.http.get<Car>(this.carDetailUrl + '/' + vehicleID);
   }
 
 }
