@@ -1,12 +1,39 @@
-<div class="w3-content">
+<div class="w3-container w3-content w3-center">
 
     <div class="pageTitle">
-        <h2>Interstellar CARS for rent:</h2>
+        <h2>Choose what suits you well:</h2>
     </div>
 
-    <div class="carListViewCard">
-        <app-car *ngFor = "let car of carList" [car]="car">
-        </app-car>
+    <div class="searchBar">
+        <div class="form-group">
+            <label for="search-text">Search for:</label>
+            <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+            [(ngModel)]="searchText" placeholder="Enter text to search for" autofocus>
+        </div>
+    </div>
+
+    <div class="w3-row">
+
+        <div class="carListCard w3-card-4 w3-white w3-col m4 l3 w3-center" *ngFor="let car of carList | searchFilter: searchText">
+
+            <div id="imageContainer w3-container">
+                <img id="productImg" src="{{ car.imgURL }}" alt="Space-car image">
+            </div>
+
+            <div class="carListText w3-container">
+                <p> {{ car.modelName }} </p>
+                <p> Number of seats: {{ car.seatNumber }} </p>
+                <p> {{ availability }} </p>
+                <p> {{ car.basicPrice | currency }} </p>
+            </div>
+
+            <div class="carListButtons w3-container">
+                <button id="detailsBtn" (click)="goToCarDetails(car)"> Details </button>
+                <button id="rentBtn" (click)="gotToOrderProcessingPage()" [disabled]="!car.availableForRent"> Rent Me </button>
+            </div>
+
+        </div>
+
     </div>
 
 </div>

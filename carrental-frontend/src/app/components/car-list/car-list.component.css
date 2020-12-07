@@ -1,7 +1,30 @@
 .pageTitle {
-    color: white;
+    color: rgb(240, 240, 240);
 }
 
-.carListViewCard {
-    
+.w3-row {
+    justify-self: center;
+}
+
+.carListCard {
+    background-color: rgb(240, 240, 240);
+    margin: 3px;
+}
+
+#productImg {
+    max-width: 100%;
+}
+
+.carListButtons {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#detailsBtn, #rentBtn {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+#detailsBtn:hover, #rentBtn:hover {
+    font-weight: bolder;
 }
