@@ -1,22 +1,64 @@
-.homeButtonsCard {
-    max-width: fit-content;
-    background-color: rgba(22, 21, 21, 0);
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
-    transition: 0.3s;
+.mainBgCard {
+    position: relative;
     padding: 5px;
     margin-top: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
-.btnStyle {
-    color: rgba(28, 210, 255, 0.7);
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    padding-left: 30px;
-    padding-right: 30px;
+.homeButtons {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 1%;
+    margin-bottom: 4%;
+    max-width: 30vw;
+}
+
+.fontEthnocentric {
+    font-size: 0.8vw;
+    font-family: ethnocentric, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgba(200, 200, 200, 1);
 }
 
 .btnStyle:hover {
-    font-size: 110%;
-    font-weight: bold;
+    font-size: 0.9vw;
+}
+
+#homeIcon {
+	position: relative;
+    width: 28.507px;
+    height: 26.21px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Path_1 {
+	fill: rgba(241,201,149,1);
+}
+.Path_1 {
+	overflow: visible;
+	position: absolute;
+    width: 22.804px;
+    height: 24.704px;
+	left: 2.852px;
+	top: 1.506px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_2 {
+	fill: rgba(241,201,149,1);
+}
+.Path_2 {
+	overflow: visible;
+	position: absolute;
+    width: 28.507px;
+    height: 14.81px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
 }

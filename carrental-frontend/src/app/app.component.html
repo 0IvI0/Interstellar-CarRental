@@ -1,26 +1,42 @@
-<div class="w3-content w3-mobile">
+<div class="w3-container w3-center w3-content">
 
-  <app-session-user></app-session-user>
+  <div class="mainBgCard w3-content">
 
-  <div class="homeButtonsCard w3-content">
-      <button class="homeButton btnStyle"><a routerLinkActive="active" routerLink="/home">
-        Home
+    <div id="sessionUserInfo">
+      <app-session-user></app-session-user>
+    </div>
+
+    <div class="homeButtons w3-center w3-content"> 
+      <div id="homeIcon">
+        <a routerLinkActive="active" routerLink="/home">
+          <span><svg class="Path_1" viewBox="4.5 4.5 22.804 24.704">
+            <path id="Path_1" d="M 15.90189838409424 6.956897735595703 L 27.30379676818848 18.35879707336426 L 27.30379676818848 26.35363960266113 C 27.30379486083984 27.92791175842285 26.0275936126709 29.2041130065918 24.45332145690918 29.2041130065918 L 7.35047435760498 29.2041130065918 C 5.776200294494629 29.2041130065918 4.499999523162842 27.92791175842285 4.499999523162842 26.35363960266113 L 4.5 18.35879707336426 L 15.90189838409424 6.956898212432861 Z M 25.40348052978516 5.45015811920166 L 25.40348052978516 12.1012659072876 L 21.60284805297852 8.300632476806641 L 21.60284805297852 5.45015811920166 C 21.60284805297852 4.925400257110596 22.02824783325195 4.5 22.55300521850586 4.5 L 24.45332145690918 4.5 C 24.97808074951172 4.5 25.40348052978516 4.925400257110596 25.40348052978516 5.45015811920166 Z">
+            </path>
+          </svg>
+          <svg class="Path_2" viewBox="1.123 2.716 28.507 14.81">
+            <path id="Path_2" d="M 14.03334045410156 3.272656202316284 C 14.77536582946777 2.531087875366211 15.97794055938721 2.531088590621948 16.7199649810791 3.272656679153442 L 29.3515796661377 15.90258121490479 C 29.72311019897461 16.27410888671875 29.72311019897461 16.8764762878418 29.35158348083496 17.24800491333008 C 28.98005485534668 17.61953353881836 28.37768745422363 17.61953353881836 28.00615692138672 17.24800491333008 L 15.37707424163818 4.616391181945801 L 2.747149229049683 17.24715995788574 C 2.375619888305664 17.61868858337402 1.773253321647644 17.61868858337402 1.401724934577942 17.24715995788574 C 1.030196309089661 16.87563133239746 1.030196309089661 16.27326393127441 1.401724457740784 15.90173530578613 L 14.03334045410156 3.272656202316284 Z">
+            </path>
+          </svg></span>
         </a>
-      </button>
-      
-      <button class="regButton btnStyle" *ngIf="sessionUser === null"><a routerLinkActive="active" routerLink="/register">
-        Register
-        </a>
-      </button>
+      </div>
 
-      <button class="loginButton btnStyle" *ngIf="sessionUser === null"><a routerLinkActive="active" routerLink="/login">
-        Login
+      <div class="registerButton fontEthnocentric btnStyle" *ngIf="sessionUser === null">
+        <a routerLinkActive="active" routerLink="/register">
+          <span>Register</span>
         </a>
-      </button>
-  </div>
+      </div>
 
-  <div class="routerOutletBody w3-content">
-    <router-outlet></router-outlet>
+      <div class="loginButton fontEthnocentric btnStyle" *ngIf="sessionUser === null">
+        <a routerLinkActive="active" routerLink="/login">
+          <span>Login</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="routerOutletBody w3-content w3-mobile">
+      <router-outlet></router-outlet>
+    </div>
+
   </div>
 
 </div>
