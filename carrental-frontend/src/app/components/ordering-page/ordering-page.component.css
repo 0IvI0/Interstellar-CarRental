@@ -1,0 +1,36 @@
+.pageTitle {
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.orderProcessingCard {
+    background-color: rgb(240, 240, 240);
+    padding-top: 2px;
+    padding-bottom: 20px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin: 5px;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+
+.datePickerButtons {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#pickDateButton, #cancelButton, #confirmButton {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+#pickDateButton:hover, #cancelButton:hover, #confirmButton:hover {
+    font-weight: bolder;
+}
