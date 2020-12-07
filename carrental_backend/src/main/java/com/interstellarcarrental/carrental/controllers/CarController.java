@@ -62,8 +62,7 @@ public class CarController {
         return carService.getCarBySeatNumber(seatNumber);
     }
 
-    //Only for employee:
-    @GetMapping("/api/employee/listCars/{vehicleId}")
+    @GetMapping("/api/cardetail/{vehicleId}")
     public CarDTO getCarByVehicleId(@PathVariable String vehicleId) {
             return carService.getCarByVehicleID(vehicleId);
     }
