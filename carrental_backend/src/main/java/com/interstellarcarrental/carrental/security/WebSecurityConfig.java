@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/employee/**").hasRole("EMPLOYEE")
 				.antMatchers("/api/customer/**").hasRole("CUSTOMER")
 				.antMatchers("/api/user/**").hasAnyRole("CUSTOMER", "EMPLOYEE")
-				.antMatchers("/", "/home", "/api/register", "/api/listCars").permitAll()
+				.antMatchers("/", "/home", "/api/register", "/api/listCars", "/api/cardetail/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			// .exceptionHandling()        // TO DO - Whitelabel error
