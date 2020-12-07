@@ -1,0 +1,38 @@
+.pageTitle {
+    color: rgb(240, 240, 240);
+}
+
+.carDetailsCard {
+    background-color: rgb(240, 240, 240);
+    padding-top: 2px;
+    padding-bottom: 20px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin: 5px;
+}
+
+.carDetailsContent {
+    display: flex;
+}
+
+#productImg {
+    max-width: 50%;
+}
+
+label {
+    font-weight: bold;
+}
+
+.carDetailsButtons {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#rentBtn, #goBackBtn {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+#rentBtn:hover, #goBackBtn:hover {
+    font-weight: bolder;
+}
