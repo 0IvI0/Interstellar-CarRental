@@ -5,6 +5,7 @@ import java.util.List;
 import com.interstellarcarrental.carrental.dto.CarDTO;
 import com.interstellarcarrental.carrental.dto.DTOconverter;
 import com.interstellarcarrental.carrental.models.Car;
+import com.interstellarcarrental.carrental.models.User;
 import com.interstellarcarrental.carrental.repositories.CarRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,16 +68,20 @@ public class CarService {
         return dtoConverter.carListEntityToDTO(carRepository.findBySeatNumber(seatNumber));
     }
 
+    public List<CarDTO> getCarByCurrentRenter(User renter) {
+        return dtoConverter.carListEntityToDTO(carRepository.findByCurrentRenter(renter));
+    }
+
 
     //DELETE method:
 
-    public String deleteCarById(long id) {
-        if (!carRepository.findById(id).isPresent()) {
-            return "No item found with the provided ID.";
+    public String deleteCarByVehicleId(String vehicleId) {
+        if (carRepository.findByVehicleIDIgnoreCase(vehicleId) == null) {
+            return "No item found with the provided Vehicle ID.";
         }
-        String vehicleID = carRepository.findById(id).get().getVehicleID();
+        long id = carRepository.findByVehicleIDIgnoreCase(vehicleId).getId();
         carRepository.deleteById(id);
-        return "Item with ID: " + id + " successfully deleted! Vehicle ID: " + vehicleID;
+        return "Item with ID: " + id + " successfully deleted! Vehicle ID: " + vehicleId;
     }
 
 
