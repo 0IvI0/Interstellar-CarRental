@@ -1,5 +1,7 @@
 package com.interstellarcarrental.carrental.dto;
 
+import com.interstellarcarrental.carrental.models.User;
+
 import lombok.Data;
 
 
@@ -7,6 +9,7 @@ import lombok.Data;
 public class CarDTO {
 
     private String vehicleID;
+    private User currentlyRentedBy;
     private String imgURL;
     private String modelName;
     private String manufacturingDate;
