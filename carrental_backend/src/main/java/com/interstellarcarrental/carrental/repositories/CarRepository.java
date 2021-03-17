@@ -3,6 +3,7 @@ package com.interstellarcarrental.carrental.repositories;
 import java.util.List;
 
 import com.interstellarcarrental.carrental.models.Car;
+import com.interstellarcarrental.carrental.models.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,4 +16,5 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findByBasicPrice(Double basicPrice);
     List<Car> findByAvailableForRent(Boolean availableForRent);
     List<Car> findBySeatNumber(Integer seatNumber);
+    List<Car> findByCurrentRenter(User renter);
 }
