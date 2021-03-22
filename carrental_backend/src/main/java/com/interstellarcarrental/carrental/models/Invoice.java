@@ -1,10 +1,10 @@
 package com.interstellarcarrental.carrental.models;
 
-/* import java.io.File;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
-import java.util.List; */
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,35 +13,50 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Column;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 
-@Slf4j
-@Setter
-@Getter
+@Data
+@NoArgsConstructor
 @Entity
-@Table(name = "Invoice")
+@Table(name = "INVOICE")
 public class Invoice {
 
     static int nextInvoiceNumber = 10000;
 
+    @Column(name = "INVOICE_ID", nullable = false, unique = true)
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+
+    @Column(name = "VAT", nullable = false)
+    private double valueAddedTax;
+
+    @Column(name = "DISCOUNT")
     private double discount;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer invoiceOwner;
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
+    private User invoiceOwner;
 
+    @Column(name = "IF_PAID")
     private boolean paidInvoice = false;
-    //private List<InvoiceItems> invoiceItems = new LinkedList<>();
-    private final int invoiceNumber;
 
-    public Invoice(final Customer invoiceOwner) {
+/*     @Column(name = "INVOICE_ITEMS")
+    private List<InvoiceItems> invoiceItems = new LinkedList<>(); */
+
+    @Column(name = "INVOICE_NR")
+    private int invoiceNumber;
+
+
+
+    public Invoice(final User invoiceOwner) {
         this.invoiceOwner = invoiceOwner;
         this.invoiceNumber = Invoice.calculateNextInvoiceNumber();
     }

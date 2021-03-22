@@ -17,7 +17,6 @@ public class CarDTO {
     private double kilometerReading;
     private boolean kilometerReadingCleared = false;
     private double basicPrice;
-    private double valueAddedTax;
     private String description;
     private boolean availableForRent;
     private int seatNumber;

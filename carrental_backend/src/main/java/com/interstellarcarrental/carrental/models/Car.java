@@ -1,7 +1,5 @@
 package com.interstellarcarrental.carrental.models;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +17,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "CAR")
-public class Car implements Serializable {
+public class Car {
 
-    private static final long serialVersionUID = 2978234905360017238L;
-
-    @Column(name = "CAR_PRIM_KEY", nullable = false, unique = true)
+    @Column(name = "CAR_ID", nullable = false, unique = true)
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
@@ -52,14 +48,11 @@ public class Car implements Serializable {
     @Column(name = "PRICE_BASIC", nullable = false)
     private double basicPrice;
 
-    @Column(name = "VAT", nullable = false)
-    private double valueAddedTax;
-
     @Column(name = "IF_AVAILABLE", nullable = false)
     private boolean availableForRent;
 
     @ManyToOne
-    @JoinColumn(name = "USER_PRIM_KEY")
+    @JoinColumn(name = "USER_ID")
     private User currentlyRentedBy;
 
     @Column(name = "DESCRIPTION", nullable = false)
