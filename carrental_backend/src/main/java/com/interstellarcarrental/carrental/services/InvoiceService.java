@@ -2,9 +2,9 @@ package com.interstellarcarrental.carrental.services;
 
 import java.util.List;
 
-import com.interstellarcarrental.carrental.dto.CustomerDTO;
 import com.interstellarcarrental.carrental.dto.DTOconverter;
 import com.interstellarcarrental.carrental.dto.InvoiceDTO;
+import com.interstellarcarrental.carrental.dto.UserDTO;
 import com.interstellarcarrental.carrental.models.Invoice;
 import com.interstellarcarrental.carrental.repositories.CustomerRepository;
 import com.interstellarcarrental.carrental.repositories.InvoiceRepository;
@@ -43,11 +43,7 @@ public class InvoiceService {
         return dtoConverter.invoiceListEntityToDTO(invoiceRepository.findAll());
     }
 
-/*     public Invoice getInvoiceById(long id) {
-        return invoiceRepository.findById(id).orElse(null);
-    } */
-
-    public List<InvoiceDTO> getInvoiceByInvoiceOwner(CustomerDTO invoiceOwnerDTO) {
+    public List<InvoiceDTO> getInvoiceByInvoiceOwner(UserDTO invoiceOwnerDTO) {
         String email = invoiceOwnerDTO.getEmailAddress();
         return dtoConverter.invoiceListEntityToDTO(invoiceRepository.findByInvoiceOwner(customerRepo.findByEmailAddressIgnoreCase(email)));
     }
