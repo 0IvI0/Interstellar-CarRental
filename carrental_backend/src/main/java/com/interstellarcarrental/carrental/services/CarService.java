@@ -40,10 +40,6 @@ public class CarService {
         return dtoConverter.carListEntityToDTO(carRepository.findAll());
     }
 
-/*     public Car getCarById(long id) {
-        return carRepository.findById(id).orElse(null);
-    }
-*/
     public CarDTO getCarByVehicleID(String vehicleID) {
         return dtoConverter.carEntityToDTO(carRepository.findByVehicleIDIgnoreCase(vehicleID));
     }
@@ -69,7 +65,7 @@ public class CarService {
     }
 
     public List<CarDTO> getCarByCurrentRenter(User renter) {
-        return dtoConverter.carListEntityToDTO(carRepository.findByCurrentRenter(renter));
+        return dtoConverter.carListEntityToDTO(carRepository.findByCurrentlyRentedBy(renter));
     }
 
 
