@@ -1,12 +1,17 @@
 package com.interstellarcarrental.carrental.services;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import com.interstellarcarrental.carrental.app_constants.RoleConstants;
 import com.interstellarcarrental.carrental.dto.CustomerDTO;
 import com.interstellarcarrental.carrental.dto.DTOconverter;
 import com.interstellarcarrental.carrental.models.Customer;
+import com.interstellarcarrental.carrental.models.Role;
 import com.interstellarcarrental.carrental.repositories.CustomerRepository;
+import com.interstellarcarrental.carrental.repositories.RoleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +26,8 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
     private DTOconverter dtoConverter;
     @Autowired
     private PasswordEncoder pwEncoder;
@@ -28,13 +35,32 @@ public class CustomerService {
 
 //POST method:
 
-    public Customer saveCustomer(CustomerDTO customerDto) {
+/*     public Customer saveCustomer(CustomerDTO customerDto) {
         customerDto.setPassword(pwEncoder.encode(customerDto.getPassword()));
         return customerRepository.save(dtoConverter.customerDTOtoEntity(customerDto));
+    } 
+*/
+
+    public String saveCustomer(CustomerDTO customerDto) {
+        customerDto.setPassword(pwEncoder.encode(customerDto.getPassword()));
+        if (customerRepository.findByUsername(customerDto.getUsername()) != null) {
+            return "This username has already been registered. Please register a new username.";
+        }
+        if (customerRepository.findByEmailAddressIgnoreCase(customerDto.getEmailAddress()) != null) {
+            return "This e-mail address has already been registered.";
+        }
+        Customer newCustomer = dtoConverter.customerDTOtoEntity(customerDto);
+        Set<Role> newCustomersRoles = new HashSet<>();
+        newCustomersRoles.add(roleRepository.findByRoleName(RoleConstants.ROLE_CUSTOMER));
+        newCustomer.setRoles(newCustomersRoles);
+        newCustomer.setEnabled(true);
+        customerRepository.save(newCustomer);
+        return "Registration successful!";
     }
 
     public List<Customer> saveCustomers(List<CustomerDTO> customersDto) {
         return customerRepository.saveAll(dtoConverter.customerListDTOtoEntity(customersDto));
+        // TO DO - check if usernames or e-mail addresses already exist + set roles and enable users
     }
 
 
