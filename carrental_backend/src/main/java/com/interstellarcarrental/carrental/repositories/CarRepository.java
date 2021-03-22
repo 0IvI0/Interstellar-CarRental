@@ -16,5 +16,5 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findByBasicPrice(Double basicPrice);
     List<Car> findByAvailableForRent(Boolean availableForRent);
     List<Car> findBySeatNumber(Integer seatNumber);
-    List<Car> findByCurrentRenter(User renter);
+    List<Car> findByCurrentlyRentedBy(User renter);
 }
