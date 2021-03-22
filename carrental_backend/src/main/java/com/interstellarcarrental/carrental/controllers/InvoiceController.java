@@ -2,8 +2,8 @@ package com.interstellarcarrental.carrental.controllers;
 
 import java.util.List;
 
-import com.interstellarcarrental.carrental.dto.CustomerDTO;
 import com.interstellarcarrental.carrental.dto.InvoiceDTO;
+import com.interstellarcarrental.carrental.dto.UserDTO;
 import com.interstellarcarrental.carrental.services.InvoiceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/listInvoices/{invoiceOwner}")
-    public List<InvoiceDTO> listInvoicesOfOwner(@PathVariable CustomerDTO invoiceOwner) {
+    public List<InvoiceDTO> listInvoicesOfOwner(@PathVariable UserDTO invoiceOwner) {
         return invoiceService.getInvoiceByInvoiceOwner(invoiceOwner);
     }
 
