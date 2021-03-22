@@ -1,24 +1,42 @@
 package com.interstellarcarrental.carrental.security;
 
 import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.Collections;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.sql.DataSource;
+
+import com.interstellarcarrental.carrental.security.filter.AuthoritiesLoggingAfterFilter;
+import com.interstellarcarrental.carrental.security.filter.AuthoritiesLoggingAtFilter;
+import com.interstellarcarrental.carrental.security.filter.JwtTokenGeneratorFilter;
+import com.interstellarcarrental.carrental.security.filter.JwtTokenValidatorFilter;
+import com.interstellarcarrental.carrental.security.filter.RequestValidationBeforeFilter;
+import com.interstellarcarrental.carrental.security.userdetails.AppUserDetailsService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -26,8 +44,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
-		return new SecurityService();
+		return new AppUserDetailsService();
 	}
+
+
+/*     @Bean
+	public UserDetailsService userDetailsService(DataSource dataSource) {
+		return new JdbcUserDetailsManager(dataSource);
+	} */
+
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -49,35 +74,54 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 
+
 //Authorization:
+
 
     @Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.httpBasic()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+            .cors().configurationSource(new CorsConfigurationSource() {
+                @Override
+                public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                    CorsConfiguration config = new CorsConfiguration();
+                    config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+                    config.setAllowedMethods(Collections.singletonList("*"));
+                    config.setAllowCredentials(true);
+                    config.setAllowedHeaders(Collections.singletonList("*"));
+                    config.setExposedHeaders(Arrays.asList("Authorization"));
+                    config.setMaxAge(3600L);
+                    return config;
+                }
+            })
+                .and()
+            .csrf()
+				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 				.and()
+            .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
+            .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
+            .addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
+            .addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
+            .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
+            
 			.authorizeRequests()
-				.antMatchers("/api/employee/**").hasRole("EMPLOYEE")
-				.antMatchers("/api/customer/**").hasRole("CUSTOMER")
-				.antMatchers("/api/user/**").hasAnyRole("CUSTOMER", "EMPLOYEE")
-				.antMatchers("/", "/home", "/api/register", "/api/listCars", "/api/cardetail/**").permitAll()
+				.mvcMatchers("/api/employee/**").hasRole("EMPLOYEE")
+				.mvcMatchers("/api/customer/**").hasRole("CUSTOMER")
+				.mvcMatchers("/api/user/**").hasAnyRole("CUSTOMER", "EMPLOYEE")
+				.mvcMatchers("/", "/home", "/api/register", "/api/auth/login", "/api/listCars", "/api/cardetail/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
-			// .exceptionHandling()        // TO DO - Whitelabel error
-			// 	.authenticationEntryPoint(new Http403ForbiddenEntryPoint())
-			// 	.and()
-			.csrf()
-				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .formLogin()
+                .and()
+            .httpBasic()	 
 				 .and()
-			.cors()	 
-				 .and()	
-			.formLogin().permitAll()
-				//.loginPage("/login").permitAll()
-				//.defaultSuccessUrl("/customer/profile{id}", true)    // TO DO
-				.and()	
 			.logout()
 			.logoutUrl("/api/logout")
 			.deleteCookies("JSESSIONID")
-				.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());   //TO DO	
+				.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())   //TO DO	
+                .and()
+            .exceptionHandling().accessDeniedPage("/403");   
 	}
 }
