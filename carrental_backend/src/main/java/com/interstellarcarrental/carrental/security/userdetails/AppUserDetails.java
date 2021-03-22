@@ -1,38 +1,50 @@
-package com.interstellarcarrental.carrental.security.userDetailsImpl;
+package com.interstellarcarrental.carrental.security.userdetails;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
-import com.interstellarcarrental.carrental.models.Customer;
+import com.interstellarcarrental.carrental.models.Role;
+import com.interstellarcarrental.carrental.models.User;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
-public class CustomerDetails implements UserDetails {
+public class AppUserDetails implements UserDetails {
 
-    private Customer customer;
+    private static final long serialVersionUID = 1L;
 
-    public CustomerDetails(Customer customer) {
-        this.customer = customer;
+    private final transient User user;
+
+    public AppUserDetails(User user) {
+        this.user = user;
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(customer.getUserRole());
-        return Arrays.asList(authority);
+        Set<Role> roles = user.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+        }
+
+        return authorities;
     }
+
 
     @Override
     public String getPassword() {
-        return customer.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return customer.getUsername();
+        return user.getUsername();
     }
 
     @Override
@@ -52,6 +64,6 @@ public class CustomerDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.isEnabled();
     }
 }
