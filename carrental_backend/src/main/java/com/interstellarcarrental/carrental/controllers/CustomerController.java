@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @CrossOrigin
-@RestController
+@RestController("/api")
 public class CustomerController {
 
     @Autowired
@@ -28,13 +28,12 @@ public class CustomerController {
 
 //POST MAPPING
 
-    @PostMapping("/api/register")
+    @PostMapping("/register")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public String registerCustomer(@RequestBody CustomerDTO customerDto) {
         CustomerDTO newCustomerDto = new CustomerDTO();
         BeanUtils.copyProperties(customerDto, newCustomerDto);
-        customerService.saveCustomer(newCustomerDto);
-        return "Registration successful!";
+        return customerService.saveCustomer(newCustomerDto);
     }
 
 

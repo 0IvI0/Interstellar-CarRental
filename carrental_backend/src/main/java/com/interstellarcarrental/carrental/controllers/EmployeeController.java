@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@RestController("/api")
 public class EmployeeController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class EmployeeController {
     
 //POST MAPPING
 
-    @PostMapping("/company/createEmployee")
+    @PostMapping("/company-admin/createEmployee")
     public String saveEmployee(EmployeeDTO employeeDto) {
         employeeService.saveEmployee(employeeDto);
         return "Registration of new employee successful!";
