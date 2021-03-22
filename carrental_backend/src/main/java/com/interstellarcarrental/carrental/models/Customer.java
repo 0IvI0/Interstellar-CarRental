@@ -1,13 +1,10 @@
 package com.interstellarcarrental.carrental.models;
 
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
@@ -19,12 +16,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class Customer extends User {
-
-    @Column(name = "TEST_USER_ROLE", nullable = false)
-    private final String userRole = "CUSTOMER";
-
-    /* @Column(name = "INVOICES") */
-    @OneToMany
-    private List<Invoice> invoiceList;
 }

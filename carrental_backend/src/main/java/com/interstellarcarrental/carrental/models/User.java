@@ -1,13 +1,10 @@
 package com.interstellarcarrental.carrental.models;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +18,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -31,11 +30,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Data
 @NoArgsConstructor
-public abstract class User implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public abstract class User {
 
-    @Column(name = "USER_PRIM_KEY", nullable = false, unique = true)
+    @Column(name = "USER_ID", nullable = false, unique = true)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
@@ -44,13 +41,14 @@ public abstract class User implements Serializable {
     protected String username;
 
     @Column(name = "PASSWORD", nullable = false)
+    @JsonIgnore
     protected String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLE",
-               joinColumns = @JoinColumn(name = "USER_PRIM_KEY"),
-               inverseJoinColumns = @JoinColumn(name = "ROLE_PRIM_KEY"))
-    protected transient Set<Role> roles = new HashSet<>();
+               joinColumns = @JoinColumn(name = "USER_ID"),
+               inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    protected Set<Role> roles;
 
     @Column(name = "ENABLED", nullable = false)
     protected boolean isEnabled;
@@ -76,6 +74,10 @@ public abstract class User implements Serializable {
     @Column(name = "CREDITCARD_NR", unique = true)
     protected String creditCardNumber;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "USER")
-    protected transient List<Car> currentlyRentedCars = new ArrayList<>();
+    @OneToMany(mappedBy = "currentlyRentedBy")
+    protected List<Car> currentlyRentedCars = new ArrayList<>();
+
+    @Column(name = "INVOICES")
+    @OneToMany(mappedBy = "invoiceOwner")
+    private List<Invoice> invoiceList;
 }
