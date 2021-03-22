@@ -1,19 +1,32 @@
 package com.interstellarcarrental.carrental.dto;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import com.interstellarcarrental.carrental.app_constants.RoleConstants;
 import com.interstellarcarrental.carrental.models.Car;
 import com.interstellarcarrental.carrental.models.Customer;
 import com.interstellarcarrental.carrental.models.Employee;
 import com.interstellarcarrental.carrental.models.Invoice;
+import com.interstellarcarrental.carrental.models.Role;
+import com.interstellarcarrental.carrental.repositories.RoleRepository;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class DTOconverter {
+
+    private final RoleRepository roleRepository;
+
+    @Autowired
+    private DTOconverter(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
     
     // CAR ENTITY <-> DTO
 
@@ -74,11 +87,15 @@ public class DTOconverter {
         return newCustomer;
     }
 
+// TO DO - give role and enable customer in CustomerService
     public List<Customer> customerListDTOtoEntity(List<CustomerDTO> customersDto) {
         List<Customer> newCustomersList = new ArrayList<>();
         for (CustomerDTO customerDto : customersDto) {
             Customer newCustomer = new Customer();
             BeanUtils.copyProperties(customerDto, newCustomer);
+            Set<Role> newCustomersRoles = new HashSet<>();
+            newCustomersRoles.add(roleRepository.findByRoleName(RoleConstants.ROLE_CUSTOMER));
+            newCustomer.setRoles(newCustomersRoles);
             newCustomersList.add(newCustomer);
         }
         return newCustomersList;
@@ -103,17 +120,25 @@ public class DTOconverter {
         return newEmployeeListDto;
     }
 
+// TO DO - give role and enable employee in EmployeeService
     public Employee employeeDTOtoEntity(EmployeeDTO employeeDTO) {
         Employee newEmployee = new Employee();
         BeanUtils.copyProperties(employeeDTO, newEmployee);
+        Set<Role> newEmployeesRoles = new HashSet<>();
+        newEmployeesRoles.add(roleRepository.findByRoleName(RoleConstants.ROLE_EMPLOYEE));
+        newEmployee.setRoles(newEmployeesRoles);
         return newEmployee;
     }
 
+// TO DO - give role and enable employee in EmployeeService    
     public List<Employee> employeeListDTOtoEntity(List<EmployeeDTO> employeesDto) {
         List<Employee> newEmployeesList = new ArrayList<>();
         for (EmployeeDTO employeeDto : employeesDto) {
             Employee newEmployee = new Employee();
             BeanUtils.copyProperties(employeeDto, newEmployee);
+            Set<Role> newEmployeesRoles = new HashSet<>();
+            newEmployeesRoles.add(roleRepository.findByRoleName(RoleConstants.ROLE_EMPLOYEE));
+            newEmployee.setRoles(newEmployeesRoles);
             newEmployeesList.add(newEmployee);
         }
         return newEmployeesList;

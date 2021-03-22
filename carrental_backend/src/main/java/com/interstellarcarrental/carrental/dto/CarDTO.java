@@ -20,7 +20,6 @@ public class CarDTO {
     private double valueAddedTax;
     private String description;
     private boolean availableForRent;
-    private int numberOfAvailableCars;
     private int seatNumber;
     private String seatCover;
     private String color;

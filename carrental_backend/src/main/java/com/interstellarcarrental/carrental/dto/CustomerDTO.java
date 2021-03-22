@@ -13,7 +13,6 @@ public class CustomerDTO {
 
     private String username;
     private String password;
-    private final String userRole = "CUSTOMER";
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
