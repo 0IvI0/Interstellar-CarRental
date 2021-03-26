@@ -107,9 +107,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
             
 			.authorizeRequests()
-				.mvcMatchers("/api/employee/**").hasRole("EMPLOYEE")
-				.mvcMatchers("/api/customer/**").hasRole("CUSTOMER")
+				// .mvcMatchers("/api/employee/**").hasRole("EMPLOYEE")
+				// .mvcMatchers("/api/customer/**").hasRole("CUSTOMER")
 				.mvcMatchers("/api/user/**").hasAnyRole("CUSTOMER", "EMPLOYEE")
+                .mvcMatchers("/api/**").permitAll() // FOR TESTING PORPUSES - TO BE DELETED!**********
 				.mvcMatchers("/", "/home", "/api/register", "/api/auth/login", "/api/listCars", "/api/cardetail/**").permitAll()
 				.anyRequest().authenticated()
 				.and()

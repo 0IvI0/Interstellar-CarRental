@@ -1,4 +1,4 @@
-<div class="mainPageContainer">
+<div class="mainPageContainer container">
     
     <div class="noCarSelected" *ngIf="!car">
         <h3>No vehicle has been selected. Please select one from the list to show all details.</h3>
@@ -12,47 +12,49 @@
 
         <div class="carDetailsCard">
 
-            <div class="carDetailsContent">
-                <div id="imageContainer">
-                    <img id="productImg" src="{{ car.imgURL }}" alt="Vehicle image">
+            <div class="carDetailsContent row justify-content-center">
+                <div class="col">
+                    <div id="imageContainer">
+                        <img id="productImg" src="{{ car.imgURL }}" alt="Vehicle image">
+                    </div>
+                    
+                    <div class="carModelSpec">
+                        <label>Model specification</label>
+                        <p> Modelname: {{ car.modelName }} </p>
+                        <p> Car ID: {{ car.vehicleID }} </p>
+                        <p> Manufactored in {{ car.manufacturingDate }} </p>
+                    </div>
+                    <div class="priceDetails">
+                        <label>Price & Availability</label>
+                        <p> AVAILABLE: {{ car.availableForRent | booleanDetailsPipe }} </p>
+                        <p> Price: {{ car.basicPrice | currency }} </p>
+                    </div>
+                    <div class="carComfort">
+                        <label>Look & Comfort</label>
+                        <p> Number of seats: {{ car.seatNumber }} </p>
+                        <p> Cover of the seats: {{ car.seatCover }} </p>
+                        <p> Color: {{ car.color }} </p>
+                    </div>
+                    <div class="technicalDetails">
+                        <label>Technical specification</label>
+                        <p> Used propellant: {{ car.propellantType }} </p>
+                        <p> Kilometer stand: {{ car.kilometerReading }} km </p>
+                        <p> Navigation system: {{ car.navigationSystem | booleanDetailsPipe }} </p>
+                        <p> Autopilot: {{ car.autoPilot | booleanDetailsPipe }} </p>
+                        <p> Temperature control system: {{ car.temperatureControlSystem | booleanDetailsPipe }} </p>
+                        <p> Safety system: {{ car.safetySystem | booleanDetailsPipe }} </p>
+                        <p> Storage cabinet: {{ car.storageCabinet | booleanDetailsPipe }} </p>
+                    </div>
+                    <div class="description">
+                        <label>Description</label>
+                        <p id="carDescriptionTxt"> {{ car.description }} </p>
+                    </div>
                 </div>
-                
-                <div class="carModelSpec">
-                    <label>Model specification</label>
-                    <p> Modelname: {{ car.modelName }} </p>
-                    <p> Car ID: {{ car.vehicleID }} </p>
-                    <p> Manufactored in {{ car.manufacturingDate }} </p>
-                </div>
-                <div class="priceDetails">
-                    <label>Price & Availability</label>
-                    <p> AVAILABLE: {{ car.availableForRent | booleanDetailsPipe }} </p>
-                    <p> Price: {{ car.basicPrice | currency }} </p>
-                </div>
-                <div class="carComfort">
-                    <label>Look & Comfort</label>
-                    <p> Number of seats: {{ car.seatNumber }} </p>
-                    <p> Cover of the seats: {{ car.seatCover }} </p>
-                    <p> Color: {{ car.color }} </p>
-                </div>
-                <div class="technicalDetails">
-                    <label>Technical specification</label>
-                    <p> Used propellant: {{ car.propellantType }} </p>
-                    <p> Kilometer stand: {{ car.kilometerReading }} km </p>
-                    <p> Navigation system: {{ car.navigationSystem | booleanDetailsPipe }} </p>
-                    <p> Autopilot: {{ car.autoPilot | booleanDetailsPipe }} </p>
-                    <p> Temperature control system: {{ car.temperatureControlSystem | booleanDetailsPipe }} </p>
-                    <p> Safety system: {{ car.safetySystem | booleanDetailsPipe }} </p>
-                    <p> Storage cabinet: {{ car.storageCabinet | booleanDetailsPipe }} </p>
-                </div>
-                <div class="description">
-                    <label>Description</label>
-                    <p id="carDescriptionTxt"> {{ car.description }} </p>
-                </div>
-            </div>
 
-            <div class="carDetailsButtons">
-                <button id="rentBtn" (click)="goToOrderProcessingPage()" [disabled]="!car.availableForRent"> Rent Me </button>
-                <button id="goBackBtn" (click)="goBackToCarList()"> Back to the list </button>
+                <div class="carDetailsButtons">
+                    <button id="rentBtn" (click)="goToOrderProcessingPage()" [disabled]="!car.availableForRent"> Rent Me </button>
+                    <button id="goBackBtn" (click)="goBackToCarList()"> Back to the list </button>
+                </div>
             </div>
 
         </div>

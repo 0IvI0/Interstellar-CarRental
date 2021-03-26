@@ -1,4 +1,4 @@
-<div class="mainPageContainer">
+<div class="mainPageContainer container">
 
     <div class="pageTitle">
         <h2>Choose what suits you well:</h2>
@@ -12,24 +12,26 @@
         </div>
     </div>
 
-    <div class="carListCard" *ngFor="let car of carList | searchFilter: searchText">
+    <div class="carListCard row justify-content-center" *ngFor="let car of carList | searchFilter: searchText">
+        <div class="col-sm-1 col-md-2 col-lg-4">
 
-        <div id="imageContainer">
-            <img id="productImg" src="{{ car.imgURL }}" alt="Space-car image">
+            <div id="imageContainer">
+                <img id="productImg" src="{{ car.imgURL }}" alt="Space-car image">
+            </div>
+
+            <div class="carListText">
+                <p> {{ car.modelName }} </p>
+                <p> Number of seats: {{ car.seatNumber }} </p>
+                <p> {{ availability }} </p>
+                <p> {{ car.basicPrice | currency }} </p>
+            </div>
+
+            <div class="carListButtons">
+                <button id="detailsBtn" (click)="goToCarDetails(car)"> Details </button>
+                <button id="rentBtn" (click)="gotToOrderProcessingPage()" [disabled]="!car.availableForRent"> Rent Me </button>
+            </div>
+
         </div>
-
-        <div class="carListText">
-            <p> {{ car.modelName }} </p>
-            <p> Number of seats: {{ car.seatNumber }} </p>
-            <p> {{ availability }} </p>
-            <p> {{ car.basicPrice | currency }} </p>
-        </div>
-
-        <div class="carListButtons">
-            <button id="detailsBtn" (click)="goToCarDetails(car)"> Details </button>
-            <button id="rentBtn" (click)="gotToOrderProcessingPage()" [disabled]="!car.availableForRent"> Rent Me </button>
-        </div>
-
     </div>
 
 </div>

@@ -27,7 +27,19 @@ body {
     background-image: url("\assets\images\backgroundImg\bgImage.png");
     background-repeat: repeat;
     background-size: cover;
+
+    -ms-overflow-style: none;  /* Hide scrollbar in IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar in Firefox */
   }
+
+body::-webkit-scrollbar  { /* Hide scrollbar in Chrome, Safari and Opera */
+    display: none;
+}
+
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
   a {
     text-decoration: none;
