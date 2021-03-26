@@ -1,6 +1,5 @@
 export class Car {
 
-    id: number;
     vehicleID: string;
     imgURL: string;
     modelName: string;
@@ -12,7 +11,6 @@ export class Car {
     valueAddedTax: number;
     description?: string;  //optional
     availableForRent: boolean;
-    numberOfAvailableCars: number;
     seatNumber: number;
     seatCover: string;
     color: string;

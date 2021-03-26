@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Customer } from 'src/app/models/Customer';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-session-user',
@@ -9,7 +10,7 @@ import { Customer } from 'src/app/models/Customer';
 })
 export class SessionUserComponent implements OnInit {
 
-  sessionUser: Customer | null = null;
+  sessionUser: User | null = null;
 
   constructor(private app: AppService) {
   }

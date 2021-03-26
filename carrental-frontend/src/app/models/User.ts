@@ -1,8 +1,6 @@
-import { User } from "./User";
+export class User {
 
-export class Customer extends User {
-
-/*     username: string;
+    username: string;
     password: string;
     firstName: string;
     lastName: string;
@@ -12,10 +10,9 @@ export class Customer extends User {
     phoneNumber: string;
     address: string;
     creditCardNumber: string;
-    //List<Invoice> invoiceList: */
+    //List<Invoice> invoiceList:
 
-    public constructor(init?: Partial<Customer>) {
-        super();
+    public constructor(init?: Partial<User>) {
         Object.assign(this, init);
     }
 }

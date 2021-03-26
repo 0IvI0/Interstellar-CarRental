@@ -5,9 +5,15 @@ import java.util.List;
 
 import com.interstellarcarrental.carrental.models.Invoice;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class UserDTO {
 

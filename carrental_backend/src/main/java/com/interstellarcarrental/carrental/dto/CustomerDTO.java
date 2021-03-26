@@ -5,13 +5,21 @@ import java.util.List;
 
 import com.interstellarcarrental.carrental.models.Invoice;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 
+@SuperBuilder
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
 @Data
-public class CustomerDTO {
+public class CustomerDTO extends UserDTO {
 
-    private String username;
+/*     private String username;
     private String password;
     private String firstName;
     private String lastName;
@@ -21,5 +29,5 @@ public class CustomerDTO {
     private String address;
     private String creditCardNumber;
 
-    private List<Invoice> invoiceList;
+    private List<Invoice> invoiceList; */
 }

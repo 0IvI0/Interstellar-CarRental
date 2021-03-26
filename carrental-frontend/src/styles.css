@@ -1,11 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
-
-body, html {
-  height: 100%;
-  margin: 0;
+:root {
+    font-size: 1.069vw;    /* (font-size: 16px;) */
+    --font-family: Georgia, 'Times New Roman', Times, serif;
+    --font-title: Georgia, 'Times New Roman', Times, serif;
+    --font-style: normal;
+    --font-weight-title: 400;
+    --line-height-normal: 1.6;
+    --text-primary: #e0dfdf;
+    --text-secondary: #2b2b2b;
+    --text-link: #CC3366;
+    --text-activeLink: #2DA7B5;
+    --bg-light: #e0dfdf;
+    --bg-dark: #2b2b2b;
+    --footer-bg-color: #525252;
+    --icon-height: 1.2vw;
 }
 
+* {
+    box-sizing: border-box;
+  }
+
 body {
+  margin: 0;
+  padding: 0;
 /*     background: rgb(24,38,62);
     background: linear-gradient(90deg, rgba(24,38,62,1) 0%, rgba(43,29,29,1) 100%); */
     background-image: url("\assets\images\backgroundImg\bgImage.png");
@@ -16,3 +32,29 @@ body {
   a {
     text-decoration: none;
   }
+
+  #app {
+    width: 100%;
+    margin: 0;
+  }
+
+
+  /* Responive Grid view: */
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}

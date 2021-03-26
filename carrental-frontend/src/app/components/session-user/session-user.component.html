@@ -1,9 +1,9 @@
-<div class="sessionUserInfo w3-content w3-mobile">
-    <div class="notLoggedInInfo sessionInfoFont w3-center" *ngIf="sessionUser === null">
+<div class="mainPageContainer sessionUserInfo">
+    <div class="notLoggedInInfo sessionInfoFont" *ngIf="sessionUser === null">
         You are NOT logged in.
     </div>
-    <div class="loggedInAsInfo sessionInfoFont w3-center" *ngIf="sessionUser !== null">
-        Logged in as {{ sessionUser.value.username }}.
+    <div class="loggedInAsInfo sessionInfoFont" *ngIf="sessionUser !== null">
+        Logged in as {{ sessionUser.username }}.
     </div>
     <div class="logoututton btnStyle fontEthnocentric" *ngIf="sessionUser !== null">
         <button (click)="logout()">Logout</button>

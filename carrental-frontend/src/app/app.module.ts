@@ -18,6 +18,10 @@ import { LogoComponent } from './components/logo/logo.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
 import { RentConfirmationComponent } from './components/rent-confirmation/rent-confirmation.component';
 import { OrderingPageComponent } from './components/ordering-page/ordering-page.component';
+import { CarCreateComponent } from './components/car-create/car-create.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
 
 
 @NgModule({
@@ -34,6 +38,10 @@ import { OrderingPageComponent } from './components/ordering-page/ordering-page.
     CarDetailsComponent,
     RentConfirmationComponent,
     OrderingPageComponent,
+    CarCreateComponent,
+    CarUpdateComponent,
+    CarDeleteComponent,
+    EmployeeDashboardComponent,
   ],
   imports: [
     BrowserModule,

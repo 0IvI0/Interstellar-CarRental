@@ -1,4 +1,4 @@
-<div class="w3-container w3-content w3-center">
+<div class="mainPageContainer">
 
     <div class="pageTitle">
         <h2>Choose what suits you well:</h2>
@@ -12,26 +12,22 @@
         </div>
     </div>
 
-    <div class="w3-row">
+    <div class="carListCard" *ngFor="let car of carList | searchFilter: searchText">
 
-        <div class="carListCard w3-card-4 w3-white w3-col m4 l3 w3-center" *ngFor="let car of carList | searchFilter: searchText">
+        <div id="imageContainer">
+            <img id="productImg" src="{{ car.imgURL }}" alt="Space-car image">
+        </div>
 
-            <div id="imageContainer w3-container">
-                <img id="productImg" src="{{ car.imgURL }}" alt="Space-car image">
-            </div>
+        <div class="carListText">
+            <p> {{ car.modelName }} </p>
+            <p> Number of seats: {{ car.seatNumber }} </p>
+            <p> {{ availability }} </p>
+            <p> {{ car.basicPrice | currency }} </p>
+        </div>
 
-            <div class="carListText w3-container">
-                <p> {{ car.modelName }} </p>
-                <p> Number of seats: {{ car.seatNumber }} </p>
-                <p> {{ availability }} </p>
-                <p> {{ car.basicPrice | currency }} </p>
-            </div>
-
-            <div class="carListButtons w3-container">
-                <button id="detailsBtn" (click)="goToCarDetails(car)"> Details </button>
-                <button id="rentBtn" (click)="gotToOrderProcessingPage()" [disabled]="!car.availableForRent"> Rent Me </button>
-            </div>
-
+        <div class="carListButtons">
+            <button id="detailsBtn" (click)="goToCarDetails(car)"> Details </button>
+            <button id="rentBtn" (click)="gotToOrderProcessingPage()" [disabled]="!car.availableForRent"> Rent Me </button>
         </div>
 
     </div>

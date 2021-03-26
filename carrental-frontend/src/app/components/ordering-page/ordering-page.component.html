@@ -1,6 +1,10 @@
-<div class="w3-container w3-content">
+<div class="mainPageContainer">
 
     <div class="orderProcessingCard">
+
+        <div class="loggedInUser" *ngIf="sessionUser !== null">
+            <p>Dear {{ sessionUser.username }}, </p>
+        </div>
 
         <div class="pageTitle">
             <h4>Your order is in progress. Just a few more clicks..</h4>

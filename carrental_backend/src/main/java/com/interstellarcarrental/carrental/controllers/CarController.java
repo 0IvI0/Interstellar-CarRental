@@ -92,7 +92,7 @@ public class CarController {
 
     // ONLY WITH ROLE: EMPLOYEE
 
-    @DeleteMapping("/employee/deleteCar{vehicleId}")
+    @DeleteMapping("/employee/deleteCar/{vehicleId}")
     public String deleteCar(@PathVariable String vehicleId) {
         carService.deleteCarByVehicleId(vehicleId);
         return "The car with the Vehicle ID " + vehicleId + " has been deleted successfully.";

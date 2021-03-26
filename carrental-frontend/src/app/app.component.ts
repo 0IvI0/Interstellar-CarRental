@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 import { Customer } from './models/Customer';
+import { User } from './models/User';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Customer } from './models/Customer';
 })
 export class AppComponent implements OnInit {
 
-  sessionUser: Customer | null = null;
+  sessionUser: User | null = null;
 
   constructor(private app: AppService) {
   }
