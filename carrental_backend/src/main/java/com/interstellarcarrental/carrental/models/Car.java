@@ -55,7 +55,7 @@ public class Car {
     @JoinColumn(name = "USER_ID")
     private User currentlyRentedBy;
 
-    @Column(name = "DESCRIPTION", nullable = false)
+    @Column(name = "DESCRIPTION")
     private String description;
 
     @Column(name = "SEAT_NR", nullable = false)

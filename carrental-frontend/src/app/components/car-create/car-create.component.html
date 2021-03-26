@@ -68,6 +68,138 @@
             name="kilometerReading"
           />
         </div>
+
+        <div class="form-group">
+            <label for="kilometerReadingCleared">Kilometer reading cleared?:</label>
+            <input
+              class="form-control"
+              id="kilometerReadingCleared"
+              required
+              [(ngModel)]="car.kilometerReadingCleared"
+              name="kilometerReadingCleared"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="basicPrice">Basic price:</label>
+            <input
+              class="form-control"
+              id="basicPrice"
+              required
+              [(ngModel)]="car.basicPrice"
+              name="basicPrice"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input
+              class="form-control"
+              id="description"
+              required
+              [(ngModel)]="car.description"
+              name="description"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="availableForRent">Available for rent:</label>
+            <input
+              class="form-control"
+              id="availableForRent"
+              required
+              [(ngModel)]="car.availableForRent"
+              name="availableForRent"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="seatNumber">Number of seats:</label>
+            <input
+              class="form-control"
+              id="seatNumber"
+              required
+              [(ngModel)]="car.seatNumber"
+              name="seatNumber"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="seatCover">Type of seat cover:</label>
+            <input
+              class="form-control"
+              id="seatCover"
+              required
+              [(ngModel)]="car.seatCover"
+              name="seatCover"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="color">Color:</label>
+            <input
+              class="form-control"
+              id="color"
+              required
+              [(ngModel)]="car.color"
+              name="color"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="navigationSystem">Navigation system:</label>
+            <input
+              class="form-control"
+              id="navigationSystem"
+              required
+              [(ngModel)]="car.navigationSystem"
+              name="navigationSystem"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="autoPilot">Auto pilot:</label>
+            <input
+              class="form-control"
+              id="autoPilot"
+              required
+              [(ngModel)]="car.autoPilot"
+              name="autoPilot"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="temperatureControlSystem">Temperature Control System:</label>
+            <input
+              class="form-control"
+              id="temperatureControlSystem"
+              required
+              [(ngModel)]="car.temperatureControlSystem"
+              name="temperatureControlSystem"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="safetySystem">Safety System:</label>
+            <input
+              class="form-control"
+              id="safetySystem"
+              required
+              [(ngModel)]="car.safetySystem"
+              name="safetySystem"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="storageCabinet">Storage cabinet included:</label>
+            <input
+              class="form-control"
+              id="storageCabinet"
+              required
+              [(ngModel)]="car.storageCabinet"
+              name="storageCabinet"
+            />
+          </div>
   
         <button (click)="createCar()" class="btn btn-success">Submit Car </button>
       </div>

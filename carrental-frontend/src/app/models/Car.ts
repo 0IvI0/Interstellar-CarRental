@@ -8,7 +8,6 @@ export class Car {
     kilometerReading: number;
     kilometerReadingCleared: boolean; 
     basicPrice: number;
-    valueAddedTax: number;
     description?: string;  //optional
     availableForRent: boolean;
     seatNumber: number;
