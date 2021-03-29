@@ -1,61 +1,71 @@
-<div class="mainPageContainer">
+<div class="orderingPageContainer">
 
-    <div class="orderProcessingCard">
-
-        <div class="loggedInUser" *ngIf="sessionUser !== null">
+    <div class="container">
+        <div class="loggedInUser .pageTitle" *ngIf="sessionUser !== null">
             <p>Dear {{ sessionUser.username }}, </p>
         </div>
-
-        <div class="pageTitle">
-            <h4>Your order is in progress. Just a few more clicks..</h4>
-        </div>
-
-        <div class="datePicker">
-
-            <label>Pick the start and the end date of your rental:</label>
-
-            <form [formGroup]="formDatePicker" (ngSubmit)="onSubmitDate()">
-
-                <div class="rentalDate">
-                    <div class="fieldStartDate">
-                        <label> Start date: </label>
-                        <input type="date" formControlName="startDate">
-                    </div>  
-                    <div class="fieldEndDate">
-                        <label> End date: </label>
-                        <input type="date" formControlName="endDate">
-                    </div>    
-                </div>
-                    
-                <div class="datePickerButtons">
-                    <button id="pickDateButton" type="submit">
-                        Pick date
-                    </button>
-
-                    <button id="cancelButton"><a routerLinkActive="active" routerLink="/carlist">
-                        Cancel
-                        </a>
-                    </button>
-                </div>
-
-            </form>
-
-        </div>
-
-
-        <div class="paymentMethod">
-            <label>Select a payment method</label>
-        </div>
-
-
-        <div class="orderSummary">
-            <label>Ordering details</label>
-            <p>Selected date: ...</p>
-            <p>Selected payment method: ...</p>
-            <button id="confirmButton" (click)="confirmOrder()"> Confirm order! </button>
-        </div>
-
-
     </div>
+
+    <div class="container">
+        <div class="pageTitle">
+            <p>Your order is in progress. Just a few more clicks..</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="orderProcessingCard col">
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="datePicker">
+                                <label>Pick the start and the end date of your rental:</label>
+                                <form [formGroup]="formDatePicker" (ngSubmit)="onSubmitDate()">
+                                    <div class="rentalDate">
+                                        <div class="fieldStartDate">
+                                            <label class="dateLabel"> Start date: </label>
+                                            <input type="date" formControlName="startDate">
+                                        </div>  
+                                        <div class="fieldEndDate">
+                                            <label class="dateLabel"> End date: </label>
+                                            <input type="date" formControlName="endDate">
+                                        </div>    
+                                    </div>    
+                                    <div class="datePickerButtons">
+                                        <button id="pickDateButton" type="submit">
+                                            Pick date
+                                        </button>
+                                        <button id="cancelButton"><a routerLinkActive="active" routerLink="/carlist">
+                                            Cancel
+                                            </a>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="paymentMethod">
+                                <label>Select a payment method</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="orderSummary">
+                                <label>Ordering details</label>
+                                <p>Selected date: ...</p>
+                                <p>Selected payment method: ...</p>
+                                <button id="confirmButton" (click)="confirmOrder()"> Confirm order! </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>    
 
 </div>

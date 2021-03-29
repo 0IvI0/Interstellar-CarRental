@@ -1,34 +1,29 @@
-.pageTitle {
-    color: rgb(0, 0, 0);
-    margin-top: 10px;
-    margin-bottom: 30px;
-}
-
 .orderProcessingCard {
+    max-height: fit-content;
+    width: fit-content;
+    margin: 10px 10px;
+    padding: 10px 10px;
     background-color: rgb(240, 240, 240);
-    padding-top: 2px;
-    padding-bottom: 20px;
-    padding-left: 2px;
-    padding-right: 2px;
-    margin: 5px;
+    box-shadow: 0 10px 18px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
 }
 
 label {
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 10px;
+    font-size: 18px;
+    margin: 30px 3px 20px 3px;
 }
 
-
-.datePickerButtons {
-    margin-top: 50px;
-    margin-bottom: 30px;
+.dateLabel {
+    font-size: 16px;
+    margin: 10px 3px;
 }
 
 #pickDateButton, #cancelButton, #confirmButton {
-    margin-left: 3px;
-    margin-right: 3px;
+    margin: 30px 3px;
+    white-space: nowrap;
 }
 
 #pickDateButton:hover, #cancelButton:hover, #confirmButton:hover {

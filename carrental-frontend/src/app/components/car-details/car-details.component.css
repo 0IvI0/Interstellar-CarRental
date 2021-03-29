@@ -1,14 +1,11 @@
-.pageTitle {
-    margin: 10px 10px;
-    color: rgb(240, 240, 240);
-    font-family: 'Courier New', Courier, monospace;
+.noCarSelected p {
     font-size: 20px;
 }
 
 .carDetailsCard {
     max-height: fit-content;
     width: fit-content;
-    margin: 20px 10px;
+    margin: 10px 10px;
     padding: 10px 10px;
     background-color: rgb(240, 240, 240);
     box-shadow: 0 10px 18px 0 rgba(0,0,0,0.8);
