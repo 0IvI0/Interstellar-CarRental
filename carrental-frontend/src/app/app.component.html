@@ -1,12 +1,10 @@
-<div class="mainPageContainer">
+<div class="appContainer">
 
-  <div class="mainBgCard">
-
-    <div id="sessionUserInfo">
+    <div>
       <app-session-user></app-session-user>
     </div>
 
-    <div class="homeButtons"> 
+    <div class="homeButtons container"> 
       <div id="homeIcon">
         <a routerLinkActive="active" routerLink="/home">
           <span><svg class="Path_1" viewBox="4.5 4.5 22.804 24.704">
@@ -33,10 +31,14 @@
       </div>
     </div>
 
-    <div id="routerOutletBody" class="container mt-5">
+    <div id="routerOutletBody">
       <router-outlet></router-outlet>
     </div>
 
-  </div>
+    <div id="appFooter">
+        <p>Interstellar CarRental</p>
+        <p>Impressum</p>
+    </div>
+
 
 </div>

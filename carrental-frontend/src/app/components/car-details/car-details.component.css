@@ -1,31 +1,52 @@
 .pageTitle {
+    margin: 10px 10px;
     color: rgb(240, 240, 240);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
 }
 
 .carDetailsCard {
+    max-height: fit-content;
+    width: fit-content;
+    margin: 20px 10px;
+    padding: 10px 10px;
     background-color: rgb(240, 240, 240);
-    padding-top: 2px;
-    padding-bottom: 20px;
-    padding-left: 2px;
-    padding-right: 2px;
-    margin: 5px;
+    box-shadow: 0 10px 18px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
 }
 
-.carDetailsContent {
-    display: flex;
+.detailsTextContainer {
+    margin: 3px;
+}
+
+.specTitle {
+    margin: 25px 5px 20px 0;
+}
+
+.imageContainer {
+    width: fit-content;
 }
 
 #productImg {
-    max-width: 50%;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
 }
 
 label {
     font-weight: bold;
 }
 
+.carDetailsCard p {
+    line-height: 1;
+}
+
 .carDetailsButtons {
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin: 20px 10px;
+    white-space: nowrap;
 }
 
 #rentBtn, #goBackBtn {

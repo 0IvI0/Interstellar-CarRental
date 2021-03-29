@@ -1,34 +1,5 @@
-.mainPageContainer {
-    width: 100%;
+.appContainer {
     margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.pageContainer {
-    width: 80%;
-}
-
-#routerOutletBody {
-    width: 100%;
-    margin: 0;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-}
-
-.mainBgCard {
-    position: relative;
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-#sessionUserInfo {
-    position: relative;
-    margin-left: 40rem;
-    margin-right: 40rem;
 }
 
 .homeButtons {
@@ -39,20 +10,24 @@
     justify-content: space-evenly;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-top: 1%;
-    margin-bottom: 4%;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 .fontEthnocentric {
-    font-size: 20px;
+    font-size: 15px;
     font-family: ethnocentric, sans-serif;
     font-weight: 400;
     font-style: normal;
     color: rgba(200, 200, 200, 1);
 }
 
+.btnStyle {
+    padding: 0 5px 0 5px;
+}
+
 .btnStyle:hover {
-    font-size: 22px;
+    font-size: 110%;
 }
 
 #homeIcon {
@@ -86,4 +61,21 @@
 	left: 0px;
 	top: 0px;
 	transform: matrix(1,0,0,1,0,0);
+}
+
+#routerOutletBody {
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#appFooter {
+    background-color: var(--footer-bg-color);
+    margin: 0;
+    padding: 40px 0 20px 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--text-secondary);
+    text-align: center;
 }

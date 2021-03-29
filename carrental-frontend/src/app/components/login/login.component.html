@@ -1,5 +1,5 @@
-<div class="pageContainer container">
-    <div class="loginCard loginContainer">
+<div id="loginContainer">
+    <div class="formCard">
     
         <div class="loginHeader">
             <h4>Login</h4>
@@ -7,7 +7,7 @@
         </div>
 
         <div class="alreadyLoggedInInfo" *ngIf="sessionUser !== null">
-            "You are logged in as {{ sessionUser.username }}. If you would like to log in with different credentials, please log out first and log in again."
+            "You are logged in as {{ sessionUser.username }}."
         </div>
 
         <div class="loginBody" *ngIf="sessionUser === null">

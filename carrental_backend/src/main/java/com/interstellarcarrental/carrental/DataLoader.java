@@ -50,7 +50,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		car1.setBasicPrice(200.0);
 		car1.setColor("blue");
 		car1.setDescription("Second example text.");
-		car1.setImgURL("carrental-frontend\\src\\assets\\images\\productImages\\shipImg.png");
+		car1.setImgURL("\\assets\\images\\productImages\\shipImg.png");
 		car1.setKilometerReading(100.0);
 		car1.setKilometerReadingCleared(false);
 		car1.setManufacturingDate("2078");
@@ -75,7 +75,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		car2.setBasicPrice(100.0);
 		car2.setColor("black");
 		car2.setDescription("Example text.");
-		car2.setImgURL("carrental-frontend\\src\\assets\\images\\productImages\\shipImg.png");
+		car2.setImgURL("\\assets\\images\\productImages\\shipImg.png");
 		car2.setKilometerReading(100.0);
 		car2.setKilometerReadingCleared(false);
 		car2.setManufacturingDate("2078");
@@ -100,7 +100,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		car3.setBasicPrice(150.0);
 		car3.setColor("metalgreen");
 		car3.setDescription("Third example text.");
-		car3.setImgURL("carrental-frontend\\src\\assets\\images\\productImages\\shipImg.png");
+		car3.setImgURL("\\assets\\images\\productImages\\shipImg.png");
 		car3.setKilometerReading(100.0);
 		car3.setKilometerReadingCleared(false);
 		car3.setManufacturingDate("2078");
@@ -125,7 +125,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		car4.setBasicPrice(160.0);
 		car4.setColor("yellow");
 		car4.setDescription("Fourth example text.");
-		car4.setImgURL("carrental-frontend\\src\\assets\\images\\productImages\\shipImg.png");
+		car4.setImgURL("\\assets\\images\\productImages\\shipImg.png");
 		car4.setKilometerReading(100.0);
 		car4.setKilometerReadingCleared(false);
 		car4.setManufacturingDate("2078");
