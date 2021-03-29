@@ -2,12 +2,12 @@
     <div class="formCard">
     
         <div class="loginHeader">
-            <h4>Login</h4>
+            <p>Login</p>
             <hr>
         </div>
 
         <div class="alreadyLoggedInInfo" *ngIf="sessionUser !== null">
-            "You are logged in as {{ sessionUser.username }}."
+            <p class="pageInfo">"You are logged in as {{ sessionUser.username }}." </p>
         </div>
 
         <div class="loginBody" *ngIf="sessionUser === null">

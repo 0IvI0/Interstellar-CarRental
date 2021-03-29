@@ -1,212 +1,278 @@
-<div style="width: 500px; margin: auto;">
-    <div class="submit-form">
-      <div *ngIf="!submitted">
-  
-        <div class="form-group">
-          <label for="vehicleID">Vehicle ID:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="vehicleID"
-            required
-            [(ngModel)]="car.vehicleID"
-            name="vehicleID"
-          />
+<div class="carCreateContainer">
+
+    <div class="container">
+        <div class="pageTitle">
+            <p>CAR REGISTRATION</p>
         </div>
-  
-        <div class="form-group">
-          <label for="imgURL">Image url:</label>
-          <input
-            class="form-control"
-            id="imgURL"
-            required
-            [(ngModel)]="car.imgURL"
-            name="imgURL"
-          />
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="carCreateCard col">
+                
+
+                <div class="submit-form">
+                    <div *ngIf="!submitted">
+                
+                      <div class="form-group">
+                        <label for="vehicleID">Vehicle ID:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="vehicleID"
+                          required
+                          [(ngModel)]="car.vehicleID"
+                          name="vehicleID"
+                        />
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="imgURL">Image url:</label>
+                        <input
+                          class="form-control"
+                          id="imgURL"
+                          type="url"
+                          required
+                          [(ngModel)]="car.imgURL"
+                          name="imgURL"
+                        />
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="modelName">Model name:</label>
+                        <input
+                          class="form-control"
+                          id="modelName"
+                          required
+                          [(ngModel)]="car.modelName"
+                          name="modelName"
+                        />
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="manufacturingDate">Manufacturing date:</label>
+                        <input
+                          class="form-control"
+                          id="manufacturingDate"
+                          type="date"
+                          required
+                          [(ngModel)]="car.manufacturingDate"
+                          name="manufacturingDate"
+                        />
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="propellantType">Propellant type:</label>
+                        <select
+                          class="form-control"
+                          id="propellantType"
+                          required
+                          [(ngModel)]="car.propellantType"
+                          name="propellantType"
+                        >
+                            <option value="quantum-fuel">Plutonium</option>
+                            <option value="quantum-fuel">Quantum fuel</option>
+                        </select>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="kilometerReading">Kilometer reading:</label>
+                        <input
+                          class="form-control"
+                          id="kilometerReading"
+                          type="number" min="0.0" step="0.1"
+                          required
+                          [(ngModel)]="car.kilometerReading"
+                          name="kilometerReading"
+                        />
+                      </div>
+              
+                      <div class="form-group">
+                          <label for="kilometerReadingCleared">Kilometer reading cleared?:</label>
+                          <select
+                            class="form-control"
+                            id="kilometerReadingCleared"
+                            required
+                            [ngModel]="car.kilometerReadingCleared | booleanDetailsPipe"
+                            (ngModelChange)="car.kilometerReadingCleared=$event"
+                            name="kilometerReadingCleared"
+                          >
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="basicPrice">Basic price:</label>
+                          <input
+                            class="form-control"
+                            id="basicPrice"
+                            type="number" min="0.0" step="0.1"
+                            required
+                            [(ngModel)]="car.basicPrice"
+                            name="basicPrice"
+                          />
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="description">Description:</label>
+                          <textarea
+                            class="form-control"
+                            id="description"
+                            required
+                            [(ngModel)]="car.description"
+                            name="description"
+                          ></textarea>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="availableForRent">Available for rent:</label>
+                          <select
+                            class="form-control"
+                            id="availableForRent"
+                            required
+                            [ngModel]="car.availableForRent | booleanDetailsPipe"
+                            (ngModelChange)="car.availableForRent=$event"
+                            name="availableForRent"
+                          >
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="seatNumber">Number of seats:</label>
+                          <input
+                            class="form-control"
+                            id="seatNumber"
+                            type="number"
+                            required
+                            [(ngModel)]="car.seatNumber"
+                            name="seatNumber"
+                          />
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="seatCover">Type of seat cover:</label>
+                          <select
+                            class="form-control"
+                            id="seatCover"
+                            required
+                            [(ngModel)]="car.seatCover"
+                            name="seatCover"
+                          >
+                            <option value="leather">Leather</option>
+                            <option value="artificial-leather">Artificial leather</option>
+                            <option value="textil">Textil</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="color">Color:</label>
+                          <select
+                            class="form-control"
+                            id="color"
+                            required
+                            [(ngModel)]="car.color"
+                            name="color"
+                          >
+                            <option id="colorMetalBlue" value="metal-blue">Metal blue</option>
+                            <option id="colorSpaceBlack" value="metal-black">Metal black</option>
+                            <option id="colorSilverNight" value="silver-night">Silver night</option>
+                            <option id="colorGoldenSun" value="golden-sun">Golden sun</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="navigationSystem">Navigation system:</label>
+                          <select
+                            class="form-control"
+                            id="navigationSystem"
+                            required
+                            [ngModel]="car.navigationSystem | booleanDetailsPipe"
+                            (ngModelChange)="car.navigationSystem=$event"
+                            name="navigationSystem"
+                          >
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="autoPilot">Auto pilot:</label>
+                          <select
+                            class="form-control"
+                            id="autoPilot"
+                            required
+                            [ngModel]="car.autoPilot | booleanDetailsPipe"
+                            (ngModelChange)="car.autoPilot=$event"
+                            name="autoPilot"
+                          >
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="temperatureControlSystem">Temperature Control System:</label>
+                          <select
+                            class="form-control"
+                            id="temperatureControlSystem"
+                            required
+                            [ngModel]="car.temperatureControlSystem | booleanDetailsPipe"
+                            (ngModelChange)="car.temperatureControlSystem=$event"
+                            name="temperatureControlSystem"
+                          >
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="safetySystem">Safety System:</label>
+                          <select
+                            class="form-control"
+                            id="safetySystem"
+                            required
+                            [ngModel]="car.safetySystem | booleanDetailsPipe"
+                            (ngModelChange)="car.safetySystem=$event"
+                            name="safetySystem"
+                          >
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                          </select>
+                        </div>
+              
+                        <div class="form-group">
+                          <label for="storageCabinet">Storage cabinet included:</label>
+                          <select
+                            class="form-control"
+                            id="storageCabinet"
+                            required
+                            [ngModel]="car.storageCabinet | booleanDetailsPipe"
+                            (ngModelChange)="car.storageCabinet=$event"
+                            name="storageCabinet"
+                          >
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                          </select>
+                        </div>
+                
+                        <div class="newCarFormButton">
+                            <button id="submitNewCarBtn" type="submit" (click)="createCar()"> Create Car </button>
+                        </div>
+                    </div>
+                
+                    <div *ngIf="submitted">
+                        <p class="pageInfo">You have successfully submitted a new Car item!</p>
+                        <div class="anotherCarBtutton">
+                            <button id="submitAnotherCarBtn" type="submit" (click)="newCar()"> Add new car </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-  
-        <div class="form-group">
-          <label for="modelName">Model name:</label>
-          <input
-            class="form-control"
-            id="modelName"
-            required
-            [(ngModel)]="car.modelName"
-            name="modelName"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="manufacturingDate">Manufacturing date:</label>
-          <input
-            class="form-control"
-            id="manufacturingDate"
-            required
-            [(ngModel)]="car.manufacturingDate"
-            name="manufacturingDate"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="propellantType">Propellant type:</label>
-          <input
-            class="form-control"
-            id="propellantType"
-            required
-            [(ngModel)]="car.propellantType"
-            name="propellantType"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="kilometerReading">Kilometer reading:</label>
-          <input
-            class="form-control"
-            id="kilometerReading"
-            required
-            [(ngModel)]="car.kilometerReading"
-            name="kilometerReading"
-          />
-        </div>
-
-        <div class="form-group">
-            <label for="kilometerReadingCleared">Kilometer reading cleared?:</label>
-            <input
-              class="form-control"
-              id="kilometerReadingCleared"
-              required
-              [(ngModel)]="car.kilometerReadingCleared"
-              name="kilometerReadingCleared"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="basicPrice">Basic price:</label>
-            <input
-              class="form-control"
-              id="basicPrice"
-              required
-              [(ngModel)]="car.basicPrice"
-              name="basicPrice"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="description">Description:</label>
-            <input
-              class="form-control"
-              id="description"
-              required
-              [(ngModel)]="car.description"
-              name="description"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="availableForRent">Available for rent:</label>
-            <input
-              class="form-control"
-              id="availableForRent"
-              required
-              [(ngModel)]="car.availableForRent"
-              name="availableForRent"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="seatNumber">Number of seats:</label>
-            <input
-              class="form-control"
-              id="seatNumber"
-              required
-              [(ngModel)]="car.seatNumber"
-              name="seatNumber"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="seatCover">Type of seat cover:</label>
-            <input
-              class="form-control"
-              id="seatCover"
-              required
-              [(ngModel)]="car.seatCover"
-              name="seatCover"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="color">Color:</label>
-            <input
-              class="form-control"
-              id="color"
-              required
-              [(ngModel)]="car.color"
-              name="color"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="navigationSystem">Navigation system:</label>
-            <input
-              class="form-control"
-              id="navigationSystem"
-              required
-              [(ngModel)]="car.navigationSystem"
-              name="navigationSystem"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="autoPilot">Auto pilot:</label>
-            <input
-              class="form-control"
-              id="autoPilot"
-              required
-              [(ngModel)]="car.autoPilot"
-              name="autoPilot"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="temperatureControlSystem">Temperature Control System:</label>
-            <input
-              class="form-control"
-              id="temperatureControlSystem"
-              required
-              [(ngModel)]="car.temperatureControlSystem"
-              name="temperatureControlSystem"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="safetySystem">Safety System:</label>
-            <input
-              class="form-control"
-              id="safetySystem"
-              required
-              [(ngModel)]="car.safetySystem"
-              name="safetySystem"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="storageCabinet">Storage cabinet included:</label>
-            <input
-              class="form-control"
-              id="storageCabinet"
-              required
-              [(ngModel)]="car.storageCabinet"
-              name="storageCabinet"
-            />
-          </div>
-  
-        <button (click)="createCar()" class="btn btn-success">Submit Car </button>
-      </div>
-  
-      <div *ngIf="submitted">
-        <h3>You have successfully submitted a new Car item!</h3>
-        <button class="btn btn-success" (click)="newCar()">Add new car</button>
-      </div>
     </div>
   </div>

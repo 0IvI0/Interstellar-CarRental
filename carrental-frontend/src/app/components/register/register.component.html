@@ -2,12 +2,12 @@
     <div class="formCard">
 
         <div class="registerHeader">
-            <h4>Registration</h4>
+            <p>Registration</p>
             <hr>
         </div>
 
         <div class="alreadyLoggedInInfo" *ngIf="sessionUser !== null">
-            "You are already logged in as {{ sessionUser.username }}."
+            <p class="pageInfo"> "You are already logged in as {{ sessionUser.username }}." </p>
         </div>
 
         <div class="registerBody" *ngIf="sessionUser === null">

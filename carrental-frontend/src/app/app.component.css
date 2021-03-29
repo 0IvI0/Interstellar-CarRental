@@ -24,6 +24,7 @@
 
 .btnStyle {
     padding: 0 5px 0 5px;
+    color: var(--text-link);
 }
 
 .btnStyle:hover {
@@ -67,15 +68,4 @@
     margin: 0;
     margin-top: 40px;
     margin-bottom: 20px;
-}
-
-#appFooter {
-    background-color: var(--footer-bg-color);
-    margin: 0;
-    padding: 40px 0 20px 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 13px;
-    line-height: 1;
-    color: var(--text-secondary);
-    text-align: center;
 }

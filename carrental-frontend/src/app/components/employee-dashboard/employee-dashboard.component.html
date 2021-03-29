@@ -1,23 +1,44 @@
-<div id="dashboardComponent">
-    <h2>DASHBOARD</h2>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="#" class="navbar-brand">CARS action</a>
-        <div class="navbar-nav mr-auto">
-            <ul>
-                <li class="nav-item">
-                    <a routerLink="carlist" class="nav-link">View Cars</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="create-car" class="nav-link">Create Car</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="update-car/:vehicleID" class="nav-link">Update Car</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="delete-car/:vehicleID" class="nav-link">Delete Car</a>
-                </li>
-            </ul>
-        </div>
-      </nav>
-</div>
+<div id="employeeDashboardContainer">
 
+    <div class="container">
+        <div class="pageTitle">
+            <p>DASHBOARD</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="employeeDashboardCard col">
+                
+                <div class="container">
+                    <div class="carAction row">
+                        <label class="carActionTitle col-12">MODIFY CARS</label>
+                        <a routerLink="/carlist" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">View Cars</a>
+                        <a routerLink="#" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">View Currently Rented Cars</a>
+                        <a routerLink="/create-car" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">Create Car</a>
+                        <a routerLink="/update-car/:vehicleID" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">Update Car</a>
+                        <a routerLink="/delete-car/:vehicleID" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">Delete Car</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="employeeDashboardCard col">
+                <div class="container">
+                    <div class="carAction row">
+                        <label class="carActionTitle col-12">MODIFY CUSTOMER</label>
+                        <a routerLink="#" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">View Customers</a>
+                        <a routerLink="#" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">View Current Renters</a>
+                        <a routerLink="#" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">Enable/Disable Customer Account</a>
+                        <a routerLink="#" class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">Update Customer Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

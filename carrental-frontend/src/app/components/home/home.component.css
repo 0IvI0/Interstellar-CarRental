@@ -16,11 +16,12 @@
     font-weight: 200;
     font-style: normal;
     color: rgba(255, 252, 252, 1);
+    color: var(--text-link);
     margin-top: 15px;
     margin-bottom: 25px;
 }
 
-.simpleLink:hover {
+.homeLink:hover {
     font-size: 110%;
     text-shadow: 1px 1px 4px rgb(206, 206, 206);
 }
